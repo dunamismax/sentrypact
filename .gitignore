@@ -1,0 +1,30 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+
+# Ruby / Rails
+/.bundle
+/vendor/bundle
+apps/*/.bundle
+apps/*/log/*
+!apps/*/log/.keep
+apps/*/tmp/*
+!apps/*/tmp/.keep
+!apps/*/tmp/pids
+apps/*/tmp/pids/*
+!apps/*/tmp/pids/.keep
+apps/*/storage/*
+!apps/*/storage/.keep
+apps/*/config/master.key
+apps/*/.kamal/secrets
+
+# Assets
+apps/*/public/assets
+apps/*/app/assets/builds/*
+!apps/*/app/assets/builds/.keep
+
+# Local editors
+.idea
+.vscode
+.playwright-cli

@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+set -eu
+
+if [ -x /opt/homebrew/opt/ruby/bin/ruby ]; then
+  export PATH="/opt/homebrew/opt/ruby/bin:/opt/homebrew/lib/ruby/gems/4.0.0/bin:$PATH"
+fi
+
+cd "$(dirname "$0")/../apps/web"
+bin/setup "$@"

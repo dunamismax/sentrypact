@@ -1,0 +1,187 @@
+<% content_for :title, "SentryPact | Filtering that stays on" %>
+
+<section class="relative isolate overflow-hidden border-b border-[#14201c]/10 bg-[#eef1ea]">
+  <div class="absolute inset-0" aria-hidden="true">
+    <div class="mx-auto grid h-full max-w-7xl grid-cols-6 gap-4 px-5 py-8 opacity-35 lg:grid-cols-12 lg:px-8">
+      <div class="col-span-5 col-start-8 mt-20 hidden rounded-md border border-[#14201c]/15 bg-white/70 p-5 shadow-sm lg:block">
+        <div class="mb-4 flex items-center justify-between">
+          <span class="text-xs font-semibold uppercase text-[#24493c]">Sentry Mode</span>
+          <span class="rounded-full bg-[#d7f8c9] px-3 py-1 text-xs font-semibold text-[#24493c]">Active</span>
+        </div>
+        <div class="space-y-3">
+          <div class="h-3 w-11/12 rounded-full bg-[#24493c]/25"></div>
+          <div class="h-3 w-7/12 rounded-full bg-[#24493c]/20"></div>
+          <div class="mt-6 grid grid-cols-3 gap-3">
+            <div class="rounded-md border border-[#14201c]/10 bg-[#f6f5ef] p-4">
+              <div class="text-2xl font-semibold">72h</div>
+              <div class="mt-1 text-xs text-[#14201c]/55">Release window</div>
+            </div>
+            <div class="rounded-md border border-[#14201c]/10 bg-[#f6f5ef] p-4">
+              <div class="text-2xl font-semibold">0</div>
+              <div class="mt-1 text-xs text-[#14201c]/55">Raw URLs shared</div>
+            </div>
+            <div class="rounded-md border border-[#14201c]/10 bg-[#f6f5ef] p-4">
+              <div class="text-2xl font-semibold">18</div>
+              <div class="mt-1 text-xs text-[#14201c]/55">Blocked attempts</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-span-3 col-start-9 mt-4 hidden rounded-md border border-[#14201c]/15 bg-white/75 p-5 shadow-sm lg:block">
+        <p class="text-xs font-semibold uppercase text-[#24493c]">Blocked categories</p>
+        <div class="mt-5 space-y-4">
+          <% ["Porn", "Gambling", "Drugs", "Proxy/VPN", "Malware"].each_with_index do |category, index| %>
+            <div class="flex items-center justify-between gap-3">
+              <span class="text-sm font-medium"><%= category %></span>
+              <span class="h-2 rounded-full bg-[#2f6f62]" style="width: <%= 42 + (index * 9) %>%"></span>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col-span-4 col-start-8 mt-4 hidden rounded-md border border-[#14201c]/15 bg-[#14201c] p-5 text-[#f6f5ef] shadow-sm lg:block">
+        <p class="text-xs font-semibold uppercase text-[#d7f8c9]">Tamper event</p>
+        <p class="mt-4 text-2xl font-semibold">DNS changed</p>
+        <p class="mt-2 text-sm text-[#f6f5ef]/65">Logged, reverted, and held until the pact release time.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="relative mx-auto flex min-h-[78svh] max-w-7xl items-center px-5 py-16 lg:px-8">
+    <div class="max-w-2xl">
+      <p class="mb-5 inline-flex rounded-full border border-[#24493c]/20 bg-white/70 px-4 py-2 text-sm font-semibold text-[#24493c]">Lockdown-first filtering and accountability</p>
+      <h1 class="text-5xl font-semibold leading-none text-[#14201c] md:text-7xl">SentryPact</h1>
+      <p class="mt-6 max-w-2xl text-xl leading-8 text-[#14201c]/75">Filtering that stays on. Make a timer-locked pact with yourself, block high-risk categories, detect bypass attempts, and keep accountability private by default.</p>
+
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <a href="mailto:hello@sentrypact.com" class="rounded-full bg-[#14201c] px-6 py-3 text-center text-sm font-semibold text-white transition hover:bg-[#24493c]">Join early access</a>
+        <a href="#pacts" class="rounded-full border border-[#14201c]/20 bg-white/70 px-6 py-3 text-center text-sm font-semibold text-[#14201c] transition hover:border-[#24493c]/40 hover:bg-white">See the pact model</a>
+      </div>
+
+      <p class="mt-6 max-w-2xl text-sm leading-6 text-[#14201c]/60">Tamper-resistant and bypass-detecting, not marketed as impossible to bypass or as a medical treatment.</p>
+    </div>
+  </div>
+</section>
+
+<section id="pacts" class="bg-[#f6f5ef] px-5 py-20 lg:px-8">
+  <div class="mx-auto max-w-7xl">
+    <div class="max-w-3xl">
+      <p class="text-sm font-semibold uppercase text-[#2f6f62]">The product idea</p>
+      <h2 class="mt-4 text-4xl font-semibold text-[#14201c] md:text-5xl">A pact is a voluntary lock with a release time.</h2>
+      <p class="mt-5 text-lg leading-8 text-[#14201c]/70">Users choose categories, choose a duration, review what becomes hard to change, and confirm with serious friction. The server records the release timestamp so device clock changes do not end the pact early.</p>
+    </div>
+
+    <div class="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <article class="rounded-md border border-[#14201c]/10 bg-white p-6 shadow-sm">
+        <p class="text-sm font-semibold text-[#2f6f62]">Solo Pact</p>
+        <h3 class="mt-4 text-2xl font-semibold">Timer-locked self protection</h3>
+        <p class="mt-4 leading-7 text-[#14201c]/65">24h, 72h, 7d, 30d, 90d, or custom durations with server-verified expiration and delayed emergency release.</p>
+      </article>
+
+      <article class="rounded-md border border-[#14201c]/10 bg-white p-6 shadow-sm">
+        <p class="text-sm font-semibold text-[#2f6f62]">Co-Signer</p>
+        <h3 class="mt-4 text-2xl font-semibold">Partner-controlled amendments</h3>
+        <p class="mt-4 leading-7 text-[#14201c]/65">Optional approval requests, auto-expiring unblock requests, tamper alerts, and privacy-preserving weekly summaries.</p>
+      </article>
+
+      <article class="rounded-md border border-[#14201c]/10 bg-white p-6 shadow-sm">
+        <p class="text-sm font-semibold text-[#2f6f62]">Sentry Mode</p>
+        <h3 class="mt-4 text-2xl font-semibold">Bypass-aware enforcement</h3>
+        <p class="mt-4 leading-7 text-[#14201c]/65">Detect DNS changes, disabled VPN, proxy tools, browser changes, revoked permissions, clock tampering, and uninstall attempts.</p>
+      </article>
+
+      <article class="rounded-md border border-[#14201c]/10 bg-white p-6 shadow-sm">
+        <p class="text-sm font-semibold text-[#2f6f62]">Reports</p>
+        <h3 class="mt-4 text-2xl font-semibold">Private by default</h3>
+        <p class="mt-4 leading-7 text-[#14201c]/65">Category counts and tamper events are enough for most accountability. Full URL history is opt-in, never the default.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="platforms" class="bg-white px-5 py-20 lg:px-8">
+  <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+    <div>
+      <p class="text-sm font-semibold uppercase text-[#2f6f62]">Build order</p>
+      <h2 class="mt-4 text-4xl font-semibold text-[#14201c] md:text-5xl">Native enforcement, Rails control plane.</h2>
+      <p class="mt-5 text-lg leading-8 text-[#14201c]/70">The website, backend, dashboard, subscriptions, pact state, and signed configuration publishing live in Rails. Device enforcement stays native where the operating system requires real control.</p>
+    </div>
+
+    <div class="grid gap-3">
+      <% [
+        ["v0.1", "iOS Solo", "Swift, local VPN/DNS filtering, Family Controls where approved, server-verified Solo Pact release."],
+        ["v0.2", "Android Solo", "Kotlin, VpnService filtering, Device Admin friction where policy allows, same pact semantics."],
+        ["v0.3", "Co-Signed Pact", "Partner web dashboard, approval requests, tamper alerts, weekly summaries, partner PIN/override."],
+        ["v0.4", "Desktop and browser", "macOS, Windows, Chrome, Edge, Firefox, Safari, DoH detection, SafeSearch enforcement."],
+        ["v0.5", "Family and groups", "Child profiles, schedules, device groups, co-parent roles, coach and recovery group plans."]
+      ].each do |version, title, body| %>
+        <article class="grid gap-4 rounded-md border border-[#14201c]/10 bg-[#f6f5ef] p-5 sm:grid-cols-[5rem_1fr]">
+          <div class="font-mono text-sm font-semibold text-[#2f6f62]"><%= version %></div>
+          <div>
+            <h3 class="text-xl font-semibold"><%= title %></h3>
+            <p class="mt-2 leading-7 text-[#14201c]/65"><%= body %></p>
+          </div>
+        </article>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="bg-[#f6f5ef] px-5 py-20 lg:px-8">
+  <div class="mx-auto max-w-7xl">
+    <div class="max-w-3xl">
+      <p class="text-sm font-semibold uppercase text-[#2f6f62]">Pricing draft</p>
+      <h2 class="mt-4 text-4xl font-semibold text-[#14201c] md:text-5xl">A paid plan centered on Solo Pact.</h2>
+      <p class="mt-5 text-lg leading-8 text-[#14201c]/70">The early business model keeps the acquisition tier useful while making timer-locked protection the first serious paid wedge.</p>
+    </div>
+
+    <div class="mt-12 grid gap-4 lg:grid-cols-4">
+      <% [
+        ["Free", "$0", "Basic filtering", "1 device, basic ad/tracker and porn DNS filtering, manual mode only."],
+        ["Solo Pact", "$6/mo", "Main early plan", "Core categories, lock timer, delayed emergency unlock, up to 3 devices, tamper detection."],
+        ["Pact Plus", "$12/mo", "Co-signer layer", "Solo plus partner approvals, tamper alerts, partner reports, and priority false-positive review."],
+        ["Family", "$18/mo", "Household coverage", "Up to 10 devices, parent dashboard, child profiles, schedules, and app blocking."]
+      ].each do |name, price, label, description| %>
+        <article class="rounded-md border border-[#14201c]/10 bg-white p-6 shadow-sm">
+          <p class="text-sm font-semibold text-[#2f6f62]"><%= label %></p>
+          <h3 class="mt-4 text-2xl font-semibold"><%= name %></h3>
+          <p class="mt-3 text-4xl font-semibold"><%= price %></p>
+          <p class="mt-5 leading-7 text-[#14201c]/65"><%= description %></p>
+        </article>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<section id="trust" class="bg-[#14201c] px-5 py-20 text-[#f6f5ef] lg:px-8">
+  <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2">
+    <div>
+      <p class="text-sm font-semibold uppercase text-[#d7f8c9]">Trust and safety</p>
+      <h2 class="mt-4 text-4xl font-semibold md:text-5xl">Lockdown cannot feel like malware.</h2>
+      <p class="mt-5 text-lg leading-8 text-[#f6f5ef]/70">Users must understand what they are locking before they lock it. Partner mode must be visible, consent-based, auditable, and designed against coercive control.</p>
+    </div>
+
+    <div class="grid gap-4 sm:grid-cols-2">
+      <article class="rounded-md border border-white/10 bg-white/5 p-6">
+        <h3 class="text-xl font-semibold">Explicit consent</h3>
+        <p class="mt-3 leading-7 text-[#f6f5ef]/65">No stealth mode, no hidden installs, visible partner status, and clear release rules before activation.</p>
+      </article>
+
+      <article class="rounded-md border border-white/10 bg-white/5 p-6">
+        <h3 class="text-xl font-semibold">Minimal reporting</h3>
+        <p class="mt-3 leading-7 text-[#f6f5ef]/65">Category counts and tamper events by default. No page contents or raw browsing history unless explicitly enabled.</p>
+      </article>
+
+      <article class="rounded-md border border-white/10 bg-white/5 p-6">
+        <h3 class="text-xl font-semibold">Emergency release</h3>
+        <p class="mt-3 leading-7 text-[#f6f5ef]/65">Cooling-off windows, partner approval, and documented medical or legal overrides with an audit trail.</p>
+      </article>
+
+      <article class="rounded-md border border-white/10 bg-white/5 p-6">
+        <h3 class="text-xl font-semibold">Honest claims</h3>
+        <p class="mt-3 leading-7 text-[#f6f5ef]/65">Tamper-resistant, bypass-detecting, privacy-preserving, and designed to add friction during high-risk moments.</p>
+      </article>
+    </div>
+  </div>
+</section>

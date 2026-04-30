@@ -1,0 +1,69 @@
+name: Web CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+defaults:
+  run:
+    working-directory: apps/web
+
+jobs:
+  scan_ruby:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          working-directory: apps/web
+
+      - name: Scan Rails security issues
+        run: bin/brakeman --no-pager
+
+      - name: Scan gem vulnerabilities
+        run: bin/bundler-audit
+
+  lint:
+    runs-on: ubuntu-latest
+    env:
+      RUBOCOP_CACHE_ROOT: tmp/rubocop
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          working-directory: apps/web
+
+      - name: Lint Ruby
+        run: bin/rubocop -f github
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install packages
+        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y libvips
+        working-directory: .
+
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          working-directory: apps/web
+
+      - name: Run tests
+        env:
+          RAILS_ENV: test
+        run: |
+          bin/rails tailwindcss:build
+          bin/rails db:test:prepare test

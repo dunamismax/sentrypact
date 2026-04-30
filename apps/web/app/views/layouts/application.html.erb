@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "SentryPact | Filtering that stays on" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="SentryPact is a lockdown-first blocker with timer-locked Solo Pacts, optional co-signers, tamper detection, and privacy-preserving accountability.">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="SentryPact">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="bg-[#f6f5ef] text-[#14201c] antialiased">
+    <header class="sticky top-0 z-50 border-b border-[#14201c]/10 bg-[#f6f5ef]/90 backdrop-blur">
+      <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8" aria-label="Primary navigation">
+        <a href="/" class="flex items-center gap-3 font-semibold">
+          <span class="flex h-9 w-9 items-center justify-center rounded-full bg-[#14201c] text-sm font-bold text-[#d7f8c9]">SP</span>
+          <span>SentryPact</span>
+        </a>
+
+        <div class="hidden items-center gap-8 text-sm font-medium text-[#14201c]/70 md:flex">
+          <a href="#pacts" class="transition hover:text-[#14201c]">Pacts</a>
+          <a href="#platforms" class="transition hover:text-[#14201c]">Platforms</a>
+          <a href="#pricing" class="transition hover:text-[#14201c]">Pricing</a>
+          <a href="#trust" class="transition hover:text-[#14201c]">Trust</a>
+        </div>
+
+        <a href="mailto:hello@sentrypact.com" class="rounded-full bg-[#14201c] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#24493c]">Early access</a>
+      </nav>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer class="border-t border-[#14201c]/10 bg-[#14201c] px-5 py-10 text-[#f6f5ef]">
+      <div class="mx-auto flex max-w-7xl flex-col gap-6 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p class="font-semibold">SentryPact</p>
+          <p class="mt-2 max-w-xl text-sm text-[#f6f5ef]/70">Filtering that stays on. Tamper-resistant, bypass-detecting, privacy-preserving protection for voluntary lockdown.</p>
+        </div>
+
+        <div class="flex flex-wrap gap-4 text-sm text-[#f6f5ef]/70">
+          <a href="mailto:privacy@sentrypact.com" class="hover:text-white">Privacy</a>
+          <a href="mailto:security@sentrypact.com" class="hover:text-white">Security</a>
+          <a href="mailto:support@sentrypact.com" class="hover:text-white">Support</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
