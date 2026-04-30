@@ -15,9 +15,31 @@ html {
 
 body {
   min-width: 320px;
+  text-rendering: optimizeLegibility;
 }
 
 ::selection {
   background: #d7f8c9;
   color: #14201c;
+}
+
+a,
+button {
+  text-underline-offset: 0.2em;
+}
+
+:focus-visible {
+  outline: 2px solid #2f6f62;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }

@@ -5,7 +5,7 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     get root_url
 
     assert_response :success
-    assert_select "h1", "SentryPact"
+    assert_select "h1", "Filtering that stays on when willpower does not."
     assert_select "title", "SentryPact | Filtering that stays on"
     assert_select "a[href=?]", "mailto:hello@sentrypact.com", minimum: 1
     assert_select "a[href=?]", "#pacts", minimum: 1

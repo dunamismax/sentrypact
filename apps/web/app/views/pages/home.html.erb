@@ -1,98 +1,151 @@
 <% content_for :title, "SentryPact | Filtering that stays on" %>
 
-<section class="relative isolate overflow-hidden border-b border-[#14201c]/10 bg-[#eef1ea]">
-  <div class="absolute inset-0" aria-hidden="true">
-    <div class="mx-auto grid h-full max-w-7xl grid-cols-6 gap-4 px-5 py-8 opacity-35 lg:grid-cols-12 lg:px-8">
-      <div class="col-span-5 col-start-8 mt-20 hidden rounded-md border border-[#14201c]/15 bg-white/70 p-5 shadow-sm lg:block">
-        <div class="mb-4 flex items-center justify-between">
-          <span class="text-xs font-semibold uppercase text-[#24493c]">Sentry Mode</span>
-          <span class="rounded-full bg-[#d7f8c9] px-3 py-1 text-xs font-semibold text-[#24493c]">Active</span>
-        </div>
-        <div class="space-y-3">
-          <div class="h-3 w-11/12 rounded-full bg-[#24493c]/25"></div>
-          <div class="h-3 w-7/12 rounded-full bg-[#24493c]/20"></div>
-          <div class="mt-6 grid grid-cols-3 gap-3">
-            <div class="rounded-md border border-[#14201c]/10 bg-[#f6f5ef] p-4">
-              <div class="text-2xl font-semibold">72h</div>
-              <div class="mt-1 text-xs text-[#14201c]/55">Release window</div>
-            </div>
-            <div class="rounded-md border border-[#14201c]/10 bg-[#f6f5ef] p-4">
-              <div class="text-2xl font-semibold">0</div>
-              <div class="mt-1 text-xs text-[#14201c]/55">Raw URLs shared</div>
-            </div>
-            <div class="rounded-md border border-[#14201c]/10 bg-[#f6f5ef] p-4">
-              <div class="text-2xl font-semibold">18</div>
-              <div class="mt-1 text-xs text-[#14201c]/55">Blocked attempts</div>
-            </div>
-          </div>
-        </div>
-      </div>
+<section class="relative isolate overflow-hidden border-b border-[#14201c]/10 bg-[radial-gradient(circle_at_75%_18%,#d7f8c9_0,#d7f8c9_18%,transparent_36%),linear-gradient(135deg,#f7f4eb_0%,#e9efe6_52%,#dbe9dd_100%)]">
+  <div class="absolute inset-0 bg-[linear-gradient(rgba(20,32,28,0.045)_1px,transparent_1px),linear-gradient(90deg,rgba(20,32,28,0.045)_1px,transparent_1px)] bg-[size:48px_48px]" aria-hidden="true"></div>
+  <div class="absolute -right-32 top-28 h-96 w-96 rounded-full bg-[#2f6f62]/20 blur-3xl" aria-hidden="true"></div>
+  <div class="absolute -bottom-36 left-1/4 h-80 w-80 rounded-full bg-[#d7f8c9]/50 blur-3xl" aria-hidden="true"></div>
 
-      <div class="col-span-3 col-start-9 mt-4 hidden rounded-md border border-[#14201c]/15 bg-white/75 p-5 shadow-sm lg:block">
-        <p class="text-xs font-semibold uppercase text-[#24493c]">Blocked categories</p>
-        <div class="mt-5 space-y-4">
-          <% ["Porn", "Gambling", "Drugs", "Proxy/VPN", "Malware"].each_with_index do |category, index| %>
-            <div class="flex items-center justify-between gap-3">
-              <span class="text-sm font-medium"><%= category %></span>
-              <span class="h-2 rounded-full bg-[#2f6f62]" style="width: <%= 42 + (index * 9) %>%"></span>
-            </div>
-          <% end %>
-        </div>
-      </div>
-
-      <div class="col-span-4 col-start-8 mt-4 hidden rounded-md border border-[#14201c]/15 bg-[#14201c] p-5 text-[#f6f5ef] shadow-sm lg:block">
-        <p class="text-xs font-semibold uppercase text-[#d7f8c9]">Tamper event</p>
-        <p class="mt-4 text-2xl font-semibold">DNS changed</p>
-        <p class="mt-2 text-sm text-[#f6f5ef]/65">Logged, reverted, and held until the pact release time.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="relative mx-auto flex min-h-[78svh] max-w-7xl items-center px-5 py-16 lg:px-8">
+  <div class="relative mx-auto grid min-h-[82svh] max-w-7xl items-center gap-12 px-5 py-16 lg:grid-cols-[0.95fr_1.05fr] lg:px-8 lg:py-24">
     <div class="max-w-2xl">
-      <p class="mb-5 inline-flex rounded-full border border-[#24493c]/20 bg-white/70 px-4 py-2 text-sm font-semibold text-[#24493c]">Lockdown-first filtering and accountability</p>
-      <h1 class="text-5xl font-semibold leading-none text-[#14201c] md:text-7xl">SentryPact</h1>
-      <p class="mt-6 max-w-2xl text-xl leading-8 text-[#14201c]/75">Filtering that stays on. Make a timer-locked pact with yourself, block high-risk categories, detect bypass attempts, and keep accountability private by default.</p>
+      <p class="mb-5 inline-flex rounded-full border border-[#24493c]/20 bg-white/75 px-4 py-2 text-sm font-semibold text-[#24493c] shadow-sm backdrop-blur">Lockdown-first filtering and accountability</p>
+      <h1 class="max-w-4xl text-5xl font-semibold tracking-[-0.06em] text-[#14201c] md:text-7xl">Filtering that stays on when willpower does not.</h1>
+      <p class="mt-6 max-w-2xl text-xl leading-8 text-[#14201c]/75">Make a timer-locked pact with yourself, block high-risk categories, detect bypass attempts, and keep accountability private by default.</p>
 
       <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-        <a href="mailto:hello@sentrypact.com" class="rounded-full bg-[#14201c] px-6 py-3 text-center text-sm font-semibold text-white transition hover:bg-[#24493c]">Join early access</a>
-        <a href="#pacts" class="rounded-full border border-[#14201c]/20 bg-white/70 px-6 py-3 text-center text-sm font-semibold text-[#14201c] transition hover:border-[#24493c]/40 hover:bg-white">See the pact model</a>
+        <a href="mailto:hello@sentrypact.com" class="rounded-full bg-[#14201c] px-6 py-3 text-center text-sm font-semibold text-white shadow-[0_18px_44px_rgba(20,32,28,0.22)] transition hover:-translate-y-0.5 hover:bg-[#24493c] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2f6f62]">Join early access</a>
+        <a href="#pacts" class="rounded-full border border-[#14201c]/20 bg-white/75 px-6 py-3 text-center text-sm font-semibold text-[#14201c] shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:border-[#24493c]/40 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2f6f62]">See the pact model</a>
+      </div>
+
+      <div class="mt-8 grid max-w-xl gap-3 text-sm text-[#14201c]/65 sm:grid-cols-3">
+        <div class="rounded-2xl border border-[#14201c]/10 bg-white/55 p-4 backdrop-blur">
+          <p class="text-2xl font-semibold text-[#14201c]">72h</p>
+          <p class="mt-1">Release window</p>
+        </div>
+        <div class="rounded-2xl border border-[#14201c]/10 bg-white/55 p-4 backdrop-blur">
+          <p class="text-2xl font-semibold text-[#14201c]">0</p>
+          <p class="mt-1">Raw URLs shared</p>
+        </div>
+        <div class="rounded-2xl border border-[#14201c]/10 bg-white/55 p-4 backdrop-blur">
+          <p class="text-2xl font-semibold text-[#14201c]">18</p>
+          <p class="mt-1">Attempts blocked</p>
+        </div>
       </div>
 
       <p class="mt-6 max-w-2xl text-sm leading-6 text-[#14201c]/60">Tamper-resistant and bypass-detecting, not marketed as impossible to bypass or as a medical treatment.</p>
     </div>
+
+    <div class="relative mx-auto w-full max-w-xl lg:max-w-none" aria-label="SentryPact dashboard preview">
+      <div class="absolute -left-6 top-12 hidden w-44 rotate-[-4deg] rounded-3xl border border-[#14201c]/10 bg-white/75 p-4 shadow-2xl shadow-[#14201c]/10 backdrop-blur sm:block">
+        <p class="text-xs font-semibold uppercase tracking-[0.16em] text-[#2f6f62]">Tamper event</p>
+        <p class="mt-3 text-xl font-semibold">DNS changed</p>
+        <p class="mt-2 text-xs leading-5 text-[#14201c]/60">Logged, reverted, held until release.</p>
+      </div>
+
+      <div class="rounded-[2rem] border border-[#14201c]/10 bg-[#14201c] p-3 shadow-[0_32px_90px_rgba(20,32,28,0.28)]">
+        <div class="overflow-hidden rounded-[1.5rem] bg-[#f8f6ef]">
+          <div class="flex items-center justify-between border-b border-[#14201c]/10 bg-white/70 px-5 py-4">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[0.18em] text-[#2f6f62]">Sentry Mode</p>
+              <p class="mt-1 font-semibold">Solo Pact active</p>
+            </div>
+            <span class="rounded-full bg-[#d7f8c9] px-3 py-1 text-xs font-semibold text-[#24493c]">Protected</span>
+          </div>
+
+          <div class="grid gap-4 p-5">
+            <div class="rounded-3xl border border-[#14201c]/10 bg-white p-5 shadow-sm">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <p class="text-sm font-semibold text-[#14201c]/60">Release available in</p>
+                  <p class="mt-2 text-5xl font-semibold tracking-[-0.06em] text-[#14201c]">71:42</p>
+                </div>
+                <span class="rounded-full border border-[#2f6f62]/20 bg-[#eef8e9] px-3 py-1 text-xs font-semibold text-[#2f6f62]">Server verified</span>
+              </div>
+              <div class="mt-5 h-3 overflow-hidden rounded-full bg-[#14201c]/10">
+                <div class="h-full w-[61%] rounded-full bg-[#2f6f62]"></div>
+              </div>
+            </div>
+
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div class="rounded-3xl border border-[#14201c]/10 bg-white p-5 shadow-sm">
+                <p class="text-xs font-semibold uppercase tracking-[0.16em] text-[#2f6f62]">Blocked categories</p>
+                <div class="mt-5 space-y-4">
+                  <% ["Porn", "Gambling", "Proxy/VPN", "Malware"].each_with_index do |category, index| %>
+                    <div>
+                      <div class="mb-2 flex items-center justify-between gap-3">
+                        <span class="text-sm font-medium"><%= category %></span>
+                        <span class="text-xs text-[#14201c]/45"><%= 18 - (index * 3) %></span>
+                      </div>
+                      <div class="h-2 overflow-hidden rounded-full bg-[#14201c]/10">
+                        <div class="h-full rounded-full bg-[#2f6f62]" style="width: <%= 76 - (index * 11) %>%"></div>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+
+              <div class="rounded-3xl border border-[#14201c]/10 bg-[#eaf3e6] p-5 shadow-sm">
+                <p class="text-xs font-semibold uppercase tracking-[0.16em] text-[#2f6f62]">Privacy summary</p>
+                <div class="mt-5 space-y-3 text-sm">
+                  <div class="flex items-center justify-between rounded-2xl bg-white/70 p-3">
+                    <span>Raw browsing history</span>
+                    <span class="font-semibold">Off</span>
+                  </div>
+                  <div class="flex items-center justify-between rounded-2xl bg-white/70 p-3">
+                    <span>Category counts</span>
+                    <span class="font-semibold">On</span>
+                  </div>
+                  <div class="flex items-center justify-between rounded-2xl bg-white/70 p-3">
+                    <span>Partner visibility</span>
+                    <span class="font-semibold">Visible</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section id="pacts" class="bg-[#f6f5ef] px-5 py-20 lg:px-8">
+<section class="border-b border-[#14201c]/10 bg-[#14201c] px-5 py-5 text-[#f6f5ef] lg:px-8">
+  <div class="mx-auto grid max-w-7xl gap-4 text-sm font-medium text-[#f6f5ef]/75 sm:grid-cols-2 lg:grid-cols-4">
+    <p class="flex items-center gap-3"><span class="h-2 w-2 rounded-full bg-[#d7f8c9]"></span>Voluntary lockdown</p>
+    <p class="flex items-center gap-3"><span class="h-2 w-2 rounded-full bg-[#d7f8c9]"></span>Server-verified release</p>
+    <p class="flex items-center gap-3"><span class="h-2 w-2 rounded-full bg-[#d7f8c9]"></span>Bypass-aware alerts</p>
+    <p class="flex items-center gap-3"><span class="h-2 w-2 rounded-full bg-[#d7f8c9]"></span>Privacy by default</p>
+  </div>
+</section>
+
+<section id="pacts" class="bg-[#f5f2e9] px-5 py-24 lg:px-8">
   <div class="mx-auto max-w-7xl">
     <div class="max-w-3xl">
-      <p class="text-sm font-semibold uppercase text-[#2f6f62]">The product idea</p>
-      <h2 class="mt-4 text-4xl font-semibold text-[#14201c] md:text-5xl">A pact is a voluntary lock with a release time.</h2>
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[#2f6f62]">The product idea</p>
+      <h2 class="mt-4 text-4xl font-semibold tracking-[-0.04em] text-[#14201c] md:text-5xl">A pact is a voluntary lock with a release time.</h2>
       <p class="mt-5 text-lg leading-8 text-[#14201c]/70">Users choose categories, choose a duration, review what becomes hard to change, and confirm with serious friction. The server records the release timestamp so device clock changes do not end the pact early.</p>
     </div>
 
-    <div class="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-      <article class="rounded-md border border-[#14201c]/10 bg-white p-6 shadow-sm">
-        <p class="text-sm font-semibold text-[#2f6f62]">Solo Pact</p>
+    <div class="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+      <article class="rounded-3xl border border-[#14201c]/10 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-[#14201c]/10">
+        <p class="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#e9f7e3] text-sm font-semibold text-[#2f6f62]">01</p>
         <h3 class="mt-4 text-2xl font-semibold">Timer-locked self protection</h3>
         <p class="mt-4 leading-7 text-[#14201c]/65">24h, 72h, 7d, 30d, 90d, or custom durations with server-verified expiration and delayed emergency release.</p>
       </article>
 
-      <article class="rounded-md border border-[#14201c]/10 bg-white p-6 shadow-sm">
-        <p class="text-sm font-semibold text-[#2f6f62]">Co-Signer</p>
+      <article class="rounded-3xl border border-[#14201c]/10 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-[#14201c]/10">
+        <p class="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#e9f7e3] text-sm font-semibold text-[#2f6f62]">02</p>
         <h3 class="mt-4 text-2xl font-semibold">Partner-controlled amendments</h3>
         <p class="mt-4 leading-7 text-[#14201c]/65">Optional approval requests, auto-expiring unblock requests, tamper alerts, and privacy-preserving weekly summaries.</p>
       </article>
 
-      <article class="rounded-md border border-[#14201c]/10 bg-white p-6 shadow-sm">
-        <p class="text-sm font-semibold text-[#2f6f62]">Sentry Mode</p>
+      <article class="rounded-3xl border border-[#14201c]/10 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-[#14201c]/10">
+        <p class="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#e9f7e3] text-sm font-semibold text-[#2f6f62]">03</p>
         <h3 class="mt-4 text-2xl font-semibold">Bypass-aware enforcement</h3>
         <p class="mt-4 leading-7 text-[#14201c]/65">Detect DNS changes, disabled VPN, proxy tools, browser changes, revoked permissions, clock tampering, and uninstall attempts.</p>
       </article>
 
-      <article class="rounded-md border border-[#14201c]/10 bg-white p-6 shadow-sm">
-        <p class="text-sm font-semibold text-[#2f6f62]">Reports</p>
+      <article class="rounded-3xl border border-[#14201c]/10 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-[#14201c]/10">
+        <p class="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#e9f7e3] text-sm font-semibold text-[#2f6f62]">04</p>
         <h3 class="mt-4 text-2xl font-semibold">Private by default</h3>
         <p class="mt-4 leading-7 text-[#14201c]/65">Category counts and tamper events are enough for most accountability. Full URL history is opt-in, never the default.</p>
       </article>
@@ -100,15 +153,15 @@
   </div>
 </section>
 
-<section id="platforms" class="bg-white px-5 py-20 lg:px-8">
+<section id="platforms" class="bg-white px-5 py-24 lg:px-8">
   <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-    <div>
-      <p class="text-sm font-semibold uppercase text-[#2f6f62]">Build order</p>
-      <h2 class="mt-4 text-4xl font-semibold text-[#14201c] md:text-5xl">Native enforcement, Rails control plane.</h2>
+    <div class="lg:sticky lg:top-28">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[#2f6f62]">Build order</p>
+      <h2 class="mt-4 text-4xl font-semibold tracking-[-0.04em] text-[#14201c] md:text-5xl">Native enforcement, Rails control plane.</h2>
       <p class="mt-5 text-lg leading-8 text-[#14201c]/70">The website, backend, dashboard, subscriptions, pact state, and signed configuration publishing live in Rails. Device enforcement stays native where the operating system requires real control.</p>
     </div>
 
-    <div class="grid gap-3">
+    <div class="relative grid gap-4 before:absolute before:bottom-8 before:left-6 before:top-8 before:hidden before:w-px before:bg-[#14201c]/10 sm:before:block">
       <% [
         ["v0.1", "iOS Solo", "Swift, local VPN/DNS filtering, Family Controls where approved, server-verified Solo Pact release."],
         ["v0.2", "Android Solo", "Kotlin, VpnService filtering, Device Admin friction where policy allows, same pact semantics."],
@@ -116,7 +169,8 @@
         ["v0.4", "Desktop and browser", "macOS, Windows, Chrome, Edge, Firefox, Safari, DoH detection, SafeSearch enforcement."],
         ["v0.5", "Family and groups", "Child profiles, schedules, device groups, co-parent roles, coach and recovery group plans."]
       ].each do |version, title, body| %>
-        <article class="grid gap-4 rounded-md border border-[#14201c]/10 bg-[#f6f5ef] p-5 sm:grid-cols-[5rem_1fr]">
+        <article class="relative grid gap-4 rounded-3xl border border-[#14201c]/10 bg-[#f5f2e9] p-5 shadow-sm sm:grid-cols-[5rem_1fr] sm:pl-16">
+          <div class="absolute left-3 top-6 hidden h-7 w-7 rounded-full border-4 border-white bg-[#2f6f62] sm:block"></div>
           <div class="font-mono text-sm font-semibold text-[#2f6f62]"><%= version %></div>
           <div>
             <h3 class="text-xl font-semibold"><%= title %></h3>
@@ -128,60 +182,73 @@
   </div>
 </section>
 
-<section id="pricing" class="bg-[#f6f5ef] px-5 py-20 lg:px-8">
+<section id="pricing" class="bg-[#f5f2e9] px-5 py-24 lg:px-8">
   <div class="mx-auto max-w-7xl">
     <div class="max-w-3xl">
-      <p class="text-sm font-semibold uppercase text-[#2f6f62]">Pricing draft</p>
-      <h2 class="mt-4 text-4xl font-semibold text-[#14201c] md:text-5xl">A paid plan centered on Solo Pact.</h2>
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[#2f6f62]">Pricing draft</p>
+      <h2 class="mt-4 text-4xl font-semibold tracking-[-0.04em] text-[#14201c] md:text-5xl">A paid plan centered on Solo Pact.</h2>
       <p class="mt-5 text-lg leading-8 text-[#14201c]/70">The early business model keeps the acquisition tier useful while making timer-locked protection the first serious paid wedge.</p>
     </div>
 
-    <div class="mt-12 grid gap-4 lg:grid-cols-4">
+    <div class="mt-12 grid gap-5 lg:grid-cols-4">
       <% [
         ["Free", "$0", "Basic filtering", "1 device, basic ad/tracker and porn DNS filtering, manual mode only."],
         ["Solo Pact", "$6/mo", "Main early plan", "Core categories, lock timer, delayed emergency unlock, up to 3 devices, tamper detection."],
         ["Pact Plus", "$12/mo", "Co-signer layer", "Solo plus partner approvals, tamper alerts, partner reports, and priority false-positive review."],
         ["Family", "$18/mo", "Household coverage", "Up to 10 devices, parent dashboard, child profiles, schedules, and app blocking."]
       ].each do |name, price, label, description| %>
-        <article class="rounded-md border border-[#14201c]/10 bg-white p-6 shadow-sm">
-          <p class="text-sm font-semibold text-[#2f6f62]"><%= label %></p>
+        <article class="relative rounded-3xl border <%= name == "Solo Pact" ? "border-[#2f6f62] bg-[#14201c] text-white shadow-2xl shadow-[#14201c]/20" : "border-[#14201c]/10 bg-white shadow-sm" %> p-6">
+          <% if name == "Solo Pact" %>
+            <span class="absolute right-5 top-5 rounded-full bg-[#d7f8c9] px-3 py-1 text-xs font-semibold text-[#24493c]">Recommended</span>
+          <% end %>
+          <p class="text-sm font-semibold <%= name == "Solo Pact" ? "text-[#d7f8c9]" : "text-[#2f6f62]" %>"><%= label %></p>
           <h3 class="mt-4 text-2xl font-semibold"><%= name %></h3>
           <p class="mt-3 text-4xl font-semibold"><%= price %></p>
-          <p class="mt-5 leading-7 text-[#14201c]/65"><%= description %></p>
+          <p class="mt-5 leading-7 <%= name == "Solo Pact" ? "text-white/70" : "text-[#14201c]/65" %>"><%= description %></p>
+          <a href="mailto:hello@sentrypact.com?subject=SentryPact%20<%= ERB::Util.url_encode(name) %>" class="mt-6 inline-flex rounded-full <%= name == "Solo Pact" ? "bg-[#d7f8c9] text-[#14201c] hover:bg-white" : "border border-[#14201c]/15 text-[#14201c] hover:border-[#2f6f62]/40 hover:bg-[#eef8e9]" %> px-4 py-2 text-sm font-semibold transition">Request <%= name %></a>
         </article>
       <% end %>
     </div>
   </div>
 </section>
 
-<section id="trust" class="bg-[#14201c] px-5 py-20 text-[#f6f5ef] lg:px-8">
+<section id="trust" class="relative overflow-hidden bg-[#14201c] px-5 py-24 text-[#f6f5ef] lg:px-8">
+  <div class="absolute -right-24 top-0 h-80 w-80 rounded-full bg-[#2f6f62]/30 blur-3xl" aria-hidden="true"></div>
   <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2">
     <div>
-      <p class="text-sm font-semibold uppercase text-[#d7f8c9]">Trust and safety</p>
-      <h2 class="mt-4 text-4xl font-semibold md:text-5xl">Lockdown cannot feel like malware.</h2>
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[#d7f8c9]">Trust and safety</p>
+      <h2 class="mt-4 text-4xl font-semibold tracking-[-0.04em] md:text-5xl">Lockdown cannot feel like malware.</h2>
       <p class="mt-5 text-lg leading-8 text-[#f6f5ef]/70">Users must understand what they are locking before they lock it. Partner mode must be visible, consent-based, auditable, and designed against coercive control.</p>
     </div>
 
     <div class="grid gap-4 sm:grid-cols-2">
-      <article class="rounded-md border border-white/10 bg-white/5 p-6">
+      <article class="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur">
         <h3 class="text-xl font-semibold">Explicit consent</h3>
         <p class="mt-3 leading-7 text-[#f6f5ef]/65">No stealth mode, no hidden installs, visible partner status, and clear release rules before activation.</p>
       </article>
 
-      <article class="rounded-md border border-white/10 bg-white/5 p-6">
+      <article class="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur">
         <h3 class="text-xl font-semibold">Minimal reporting</h3>
         <p class="mt-3 leading-7 text-[#f6f5ef]/65">Category counts and tamper events by default. No page contents or raw browsing history unless explicitly enabled.</p>
       </article>
 
-      <article class="rounded-md border border-white/10 bg-white/5 p-6">
+      <article class="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur">
         <h3 class="text-xl font-semibold">Emergency release</h3>
         <p class="mt-3 leading-7 text-[#f6f5ef]/65">Cooling-off windows, partner approval, and documented medical or legal overrides with an audit trail.</p>
       </article>
 
-      <article class="rounded-md border border-white/10 bg-white/5 p-6">
+      <article class="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur">
         <h3 class="text-xl font-semibold">Honest claims</h3>
         <p class="mt-3 leading-7 text-[#f6f5ef]/65">Tamper-resistant, bypass-detecting, privacy-preserving, and designed to add friction during high-risk moments.</p>
       </article>
     </div>
+  </div>
+
+  <div class="relative mx-auto mt-14 max-w-7xl rounded-[2rem] border border-white/10 bg-white/[0.07] p-6 backdrop-blur md:flex md:items-center md:justify-between md:gap-8 md:p-8">
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[#d7f8c9]">Early access</p>
+      <h2 class="mt-3 text-3xl font-semibold tracking-[-0.04em] md:text-4xl">Help shape protection that respects consent.</h2>
+    </div>
+    <a href="mailto:hello@sentrypact.com" class="mt-6 inline-flex rounded-full bg-[#d7f8c9] px-6 py-3 text-sm font-semibold text-[#14201c] transition hover:-translate-y-0.5 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d7f8c9] md:mt-0">Request access</a>
   </div>
 </section>
