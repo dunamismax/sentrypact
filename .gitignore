@@ -7,6 +7,7 @@
 /.bundle
 /vendor/bundle
 apps/*/.bundle
+apps/*/vendor/bundle
 apps/*/log/*
 !apps/*/log/.keep
 apps/*/tmp/*
