@@ -4,7 +4,7 @@ Rails website, backend, and future customer dashboard for SentryPact.
 
 ## Stack
 
-- Ruby 4.0.1
+- Ruby 4.0.3
 - Rails 8.1.3
 - Hotwire with importmap
 - Propshaft

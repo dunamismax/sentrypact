@@ -23,7 +23,7 @@ packages/       Shared rules, schemas, fixtures, and generated clients
 infra/          Deployment, DNS, CDN, observability, and environments
 ```
 
-The first checked-in app is `apps/web`, generated with Rails 8.1.3, Ruby 4.0.1, Hotwire, Propshaft, Tailwind CSS, Solid Queue, Solid Cache, Solid Cable, Kamal, Brakeman, bundler-audit, and Rails' default test stack.
+The first checked-in app is `apps/web`, generated with Rails 8.1.3, Ruby 4.0.3, Hotwire, Propshaft, Tailwind CSS, Solid Queue, Solid Cache, Solid Cable, Kamal, Brakeman, bundler-audit, and Rails' default test stack.
 
 ## Product Wedge
 
@@ -101,7 +101,7 @@ bin/dev
 
 Then open [http://localhost:3000](http://localhost:3000).
 
-The root scripts prepend Homebrew Ruby on this machine because macOS' system Ruby is too old for Rails 8. Direct app commands also work once Ruby 4.0.1 is first on `PATH` or the repo's mise config is active.
+The root scripts prepend Homebrew Ruby on this machine because macOS' system Ruby is too old for Rails 8. Direct app commands also work once Ruby 4.0.3 is first on `PATH` or the repo's mise config is active.
 
 Useful checks:
 
