@@ -12,6 +12,14 @@
 
     <%= yield :head %>
 
+    <script>
+      (() => {
+        const theme = localStorage.getItem("sentrypact-theme") || "dark";
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
+
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
     <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 
@@ -24,31 +32,39 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="bg-[#f5f2e9] text-[#14201c] antialiased">
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-[#d7f8c9] focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-[#14201c]">Skip to content</a>
+  <body class="antialiased">
+    <a href="#main-content" class="skip-link">Skip to content</a>
 
-    <header class="sticky top-0 z-50 border-b border-[#14201c]/10 bg-[#f5f2e9]/85 backdrop-blur-xl">
-      <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8" aria-label="Primary navigation">
-        <a href="/" class="group flex items-center gap-3 font-semibold tracking-tight">
-          <span class="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#14201c] text-sm font-bold text-[#d7f8c9] shadow-[0_12px_30px_rgba(20,32,28,0.18)] transition group-hover:-translate-y-0.5">SP</span>
-          <span class="text-lg">SentryPact</span>
+    <header class="site-header">
+      <nav class="primary-nav" aria-label="Primary navigation">
+        <a href="/" class="brand-link">
+          <span class="brand-mark">SP</span>
+          <span>SentryPact</span>
         </a>
 
-        <div class="hidden items-center gap-8 text-sm font-medium text-[#14201c]/70 md:flex">
-          <a href="#pacts" class="transition hover:text-[#14201c]">Pacts</a>
-          <a href="#platforms" class="transition hover:text-[#14201c]">Platforms</a>
-          <a href="#pricing" class="transition hover:text-[#14201c]">Pricing</a>
-          <a href="#trust" class="transition hover:text-[#14201c]">Trust</a>
+        <div class="desktop-nav">
+          <a href="#pacts">Pacts</a>
+          <a href="#platforms">Platforms</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#trust">Trust</a>
         </div>
 
-        <a href="mailto:hello@sentrypact.com" class="rounded-full bg-[#14201c] px-4 py-2 text-sm font-semibold text-white shadow-[0_14px_34px_rgba(20,32,28,0.16)] transition hover:-translate-y-0.5 hover:bg-[#24493c] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2f6f62]">Early access</a>
+        <div class="nav-actions">
+          <button type="button" class="theme-toggle" data-controller="theme" data-action="theme#toggle" aria-pressed="true">
+            <span class="theme-toggle__track" aria-hidden="true">
+              <span class="theme-toggle__thumb"></span>
+            </span>
+            <span data-theme-target="label">Dark</span>
+          </button>
+          <a href="mailto:hello@sentrypact.com" class="button button-primary nav-cta">Early access</a>
+        </div>
       </nav>
 
-      <nav class="mx-auto flex max-w-7xl gap-2 overflow-x-auto px-5 pb-3 text-sm font-medium text-[#14201c]/70 md:hidden" aria-label="Section navigation">
-        <a href="#pacts" class="rounded-full border border-[#14201c]/10 bg-white/55 px-3 py-1.5">Pacts</a>
-        <a href="#platforms" class="rounded-full border border-[#14201c]/10 bg-white/55 px-3 py-1.5">Platforms</a>
-        <a href="#pricing" class="rounded-full border border-[#14201c]/10 bg-white/55 px-3 py-1.5">Pricing</a>
-        <a href="#trust" class="rounded-full border border-[#14201c]/10 bg-white/55 px-3 py-1.5">Trust</a>
+      <nav class="mobile-nav" aria-label="Section navigation">
+        <a href="#pacts">Pacts</a>
+        <a href="#platforms">Platforms</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#trust">Trust</a>
       </nav>
     </header>
 
@@ -56,14 +72,14 @@
       <%= yield %>
     </main>
 
-    <footer class="border-t border-[#14201c]/10 bg-[#14201c] px-5 py-12 text-[#f6f5ef]">
-      <div class="mx-auto flex max-w-7xl flex-col gap-8 md:flex-row md:items-center md:justify-between">
+    <footer class="site-footer">
+      <div class="footer-inner">
         <div>
-          <p class="text-lg font-semibold tracking-tight">SentryPact</p>
-          <p class="mt-2 max-w-xl text-sm text-[#f6f5ef]/70">Filtering that stays on. Tamper-resistant, bypass-detecting, privacy-preserving protection for voluntary lockdown.</p>
+          <p class="footer-brand">SentryPact</p>
+          <p class="footer-copy">Filtering that stays on. Tamper-resistant, bypass-detecting, privacy-preserving protection for voluntary lockdown.</p>
         </div>
 
-        <div class="flex flex-wrap gap-4 text-sm text-[#f6f5ef]/70">
+        <div class="footer-links">
           <a href="mailto:privacy@sentrypact.com" class="hover:text-white">Privacy</a>
           <a href="mailto:security@sentrypact.com" class="hover:text-white">Security</a>
           <a href="mailto:support@sentrypact.com" class="hover:text-white">Support</a>
