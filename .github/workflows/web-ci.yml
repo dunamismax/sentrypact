@@ -10,42 +10,7 @@ defaults:
     working-directory: apps/web
 
 jobs:
-  scan_ruby:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v6
-
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
-          working-directory: apps/web
-
-      - name: Scan Rails security issues
-        run: bin/brakeman --no-pager
-
-      - name: Scan gem vulnerabilities
-        run: bin/bundler-audit
-
-  lint:
-    runs-on: ubuntu-latest
-    env:
-      RUBOCOP_CACHE_ROOT: tmp/rubocop
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v6
-
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
-          working-directory: apps/web
-
-      - name: Lint Ruby
-        run: bin/rubocop -f github
-
-  test:
+  web:
     runs-on: ubuntu-latest
     steps:
       - name: Install packages
@@ -61,9 +26,17 @@ jobs:
           bundler-cache: true
           working-directory: apps/web
 
-      - name: Run tests
+      - name: Run web CI
         env:
+          CI: true
           RAILS_ENV: test
-        run: |
-          bin/rails tailwindcss:build
-          bin/rails db:test:prepare test
+        run: bin/ci
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Build production image
+        run: docker build -t sentrypact-web:ci .

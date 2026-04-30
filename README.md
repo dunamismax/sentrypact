@@ -107,12 +107,28 @@ Useful checks:
 
 ```sh
 cd apps/web
+bin/ci
 bin/rails tailwindcss:build
 bin/rails test
 bin/rubocop
 bin/brakeman --no-pager
 bin/bundler-audit
 ```
+
+`bin/ci` is the canonical web gate and is what GitHub Actions runs. The workflow
+also builds the production Docker image so deployment regressions fail before a
+release.
+
+Production configuration is environment-driven:
+
+- `RAILS_MASTER_KEY` for encrypted credentials
+- `APP_HOST` for generated links, defaulting to `sentrypact.com`
+- `RAILS_HOSTS` for allowed hosts, defaulting to `APP_HOST` and `www.sentrypact.com`
+- `RAILS_FORCE_SSL` and `RAILS_ASSUME_SSL`, both secure-by-default
+- `MAIL_FROM` for product mail
+
+The checked-in Kamal deploy file is still a scaffold until real hosts, registry,
+secrets, and backup policy are assigned.
 
 ## Pricing Draft
 
