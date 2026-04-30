@@ -8,4 +8,12 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   root "pages#home"
+
+  get "overview", to: "pages#overview", as: :overview
+  get "pacts",    to: "pages#pacts",    as: :pacts
+  get "privacy",  to: "pages#privacy",  as: :privacy
+  get "safety",   to: "pages#safety",   as: :safety
+  get "pricing",  to: "pages#pricing",  as: :pricing
+  get "faq",      to: "pages#faq",      as: :faq
+  get "support",  to: "pages#support",  as: :support
 end

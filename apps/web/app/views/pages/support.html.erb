@@ -1,0 +1,84 @@
+<% content_for :title, "Support | SentryPact" %>
+<% content_for :description, "How to reach SentryPact for support, privacy questions, security disclosures, press, and safety reports." %>
+
+<section class="page-hero">
+  <div class="section-inner">
+    <p class="eyebrow">Support</p>
+    <h1>Talk to a real person.</h1>
+    <p class="lede">SentryPact is small and pre-launch. Every email goes to a human, not a queue. If something is unsafe or urgent, write to us from any inbox you can reach, including a friend's.</p>
+  </div>
+</section>
+
+<section class="page-section">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <% [
+        {
+          title: "General & early access",
+          email: "hello@sentrypact.com",
+          detail: "Product questions, early-access requests, partnership ideas. Best first stop if you are not sure where to write."
+        },
+        {
+          title: "Support",
+          email: "support@sentrypact.com",
+          detail: "Account help, billing questions once billing is live, and how-to questions. Safety reports are also welcome here and are routed first."
+        },
+        {
+          title: "Privacy",
+          email: "privacy@sentrypact.com",
+          detail: "Questions about defaults, retention, opt-in features, partner mode visibility, or specific data-use concerns."
+        },
+        {
+          title: "Security disclosures",
+          email: "security@sentrypact.com",
+          detail: "Vulnerability reports, abuse paths, signing or supply-chain concerns. Coordinated disclosure is welcome; reach out before going public."
+        },
+        {
+          title: "Press",
+          email: "press@sentrypact.com",
+          detail: "Background, interviews, and product framing. We are happy to talk about the product wedge and the safety design."
+        }
+      ].each do |contact| %>
+        <article class="contact-card">
+          <p class="contact-card__title"><%= contact[:title] %></p>
+          <%= mail_to contact[:email], contact[:email], class: "contact-card__email" %>
+          <p class="contact-card__detail"><%= contact[:detail] %></p>
+        </article>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<section class="page-section page-section-alt">
+  <div class="section-inner split-section">
+    <div class="section-heading sticky-heading">
+      <p class="eyebrow">What to expect</p>
+      <h2>Honest response times.</h2>
+      <p>We are still pre-launch and the team is small. The targets below are the ones we hold ourselves to today, and they will get faster as the product grows.</p>
+    </div>
+
+    <div class="prose">
+      <h3>Pre-launch response targets</h3>
+      <ul>
+        <li><strong>Safety reports:</strong> same business day, ahead of feature work</li>
+        <li><strong>Security disclosures:</strong> within 2 business days, with a coordinated-disclosure timeline if applicable</li>
+        <li><strong>Privacy questions:</strong> within 3 business days</li>
+        <li><strong>General &amp; early access:</strong> within 5 business days</li>
+      </ul>
+
+      <h3>What we ask of you</h3>
+      <ul>
+        <li>Be specific. The more we know, the faster we can help.</li>
+        <li>For security, please give us a chance to fix before publishing.</li>
+        <li>For safety, write from anywhere you can reach. We will not blame you for the inbox you used.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<%= render "shared/cta_banner",
+      eyebrow: "Early access",
+      heading: "Reach out and stay informed.",
+      copy: "Pre-launch sign-ups get product progress without marketing list spam. We will tell you when there is something real to try.",
+      cta_label: "Email hello@sentrypact.com",
+      cta_href: "mailto:hello@sentrypact.com" %>

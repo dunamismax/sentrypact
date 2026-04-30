@@ -1,0 +1,141 @@
+<% content_for :title, "Privacy | SentryPact" %>
+<% content_for :description, "What SentryPact collects by default, what is opt-in, and what we will not do. Privacy is a product feature, not a marketing line." %>
+
+<section class="page-hero">
+  <div class="section-inner">
+    <p class="eyebrow">Privacy</p>
+    <h1>Collect less. Explain everything.</h1>
+    <p class="lede">Privacy is a product feature for SentryPact, not a footnote. We earn trust by collecting less, defaulting to category-level signals, and making any deeper collection an explicit opt-in with a real reason.</p>
+  </div>
+</section>
+
+<section class="page-section">
+  <div class="section-inner">
+    <div class="section-heading">
+      <p class="eyebrow">By default</p>
+      <h2>What is on, what is off.</h2>
+      <p>The Solo MVP is built around the smallest data collection that still proves the product works. Nothing here describes a feature that exists today; it describes the privacy contract the product is being built against.</p>
+    </div>
+
+    <div class="duration-grid duration-grid--two">
+      <article class="duration-card duration-card--positive">
+        <p class="duration-card__length">On</p>
+        <p class="duration-card__label">Default collection</p>
+        <ul>
+          <li>Category-level block counts</li>
+          <li>Tamper, bypass, and heartbeat events</li>
+          <li>Device check-in metadata</li>
+          <li>Pact lifecycle and release decisions</li>
+          <li>Audit trail for safety-sensitive actions</li>
+        </ul>
+      </article>
+
+      <article class="duration-card duration-card--negative">
+        <p class="duration-card__length">Off</p>
+        <p class="duration-card__label">Default exclusions</p>
+        <ul>
+          <li>Raw browsing history</li>
+          <li>Page contents and request bodies</li>
+          <li>Partner screenshots</li>
+          <li>Hidden background reporting</li>
+          <li>Cross-account data sharing</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="page-section page-section-alt">
+  <div class="section-inner split-section">
+    <div class="section-heading sticky-heading">
+      <p class="eyebrow">Opt-in only</p>
+      <h2>If it is sensitive, you turn it on.</h2>
+      <p>Some users will need higher-detail accountability. We are designing those features as explicit opt-in features with visible status, audit, and an off switch that does not feel like a trap.</p>
+    </div>
+
+    <div class="prose">
+      <h3>Examples of opt-in features</h3>
+      <ul>
+        <li>Full URL logging when a user explicitly chooses it</li>
+        <li>High-detail partner reporting beyond category counts</li>
+        <li>Configurable retention windows for events</li>
+        <li>Sharing diagnostic data when reporting a bug</li>
+      </ul>
+
+      <h3>What opt-in actually means here</h3>
+      <ul>
+        <li>The choice is visible inside the app, not buried in a settings web page</li>
+        <li>Switching it on is logged in the audit trail</li>
+        <li>Switching it off does not require asking permission</li>
+        <li>The status is visible to any configured co-signer</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="page-section">
+  <div class="section-inner">
+    <div class="section-heading">
+      <p class="eyebrow">Things we will not do</p>
+      <h2>Hard lines, written down.</h2>
+      <p>Privacy commitments work because they are public, specific, and uncomfortable to walk back.</p>
+    </div>
+
+    <div class="trust-card-grid">
+      <article>
+        <h3>No stealth mode</h3>
+        <p>The app makes its presence and current state obvious to the user it is protecting. No hidden installs, no disguised icons, no covert reporting.</p>
+      </article>
+
+      <article>
+        <h3>No silent partner monitoring</h3>
+        <p>If a co-signer is configured, the protected user can see the relationship, the access log, and the data being shared. Coercive-control patterns are designed against, not enabled.</p>
+      </article>
+
+      <article>
+        <h3>No raw browsing history by default</h3>
+        <p>Default collection is category counts and tamper events. URL-level data only exists when the user explicitly turns it on for themselves.</p>
+      </article>
+
+      <article>
+        <h3>No selling, advertising, or training on user data</h3>
+        <p>SentryPact is a paid product with a small, sustainable price ladder. There is no incentive to monetize private behavior, and no plan to.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="page-section page-section-alt">
+  <div class="section-inner split-section">
+    <div class="section-heading sticky-heading">
+      <p class="eyebrow">Retention &amp; deletion</p>
+      <h2>Short by default. Documented at every step.</h2>
+      <p>Final retention windows will be set before launch, alongside backup and recovery policy. The published goal is to retain only as long as the product needs to function safely.</p>
+    </div>
+
+    <div class="prose">
+      <h3>What gets stored centrally</h3>
+      <ul>
+        <li>Pact state and release decisions</li>
+        <li>Device enrollment metadata</li>
+        <li>Aggregated event counts and tamper signals</li>
+        <li>Subscription state and entitlement audit</li>
+      </ul>
+
+      <h3>What is documented before launch</h3>
+      <ul>
+        <li>Default retention windows for each data category</li>
+        <li>Account closure and deletion behavior</li>
+        <li>Backup and restore policy</li>
+        <li>The exact data exportable to the user on request</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<%= render "shared/cta_banner",
+      eyebrow: "Privacy questions",
+      heading: "Talk to us before you trust us.",
+      copy: "Privacy is a contract, not a product. Reach out with any question about defaults, retention, or partner mode visibility.",
+      cta_label: "Email privacy@sentrypact.com",
+      cta_href: "mailto:privacy@sentrypact.com" %>

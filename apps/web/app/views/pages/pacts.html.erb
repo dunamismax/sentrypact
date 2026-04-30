@@ -1,0 +1,194 @@
+<% content_for :title, "Solo Pacts | SentryPact" %>
+<% content_for :description, "How a Solo Pact works: configure, confirm, lock, serve, release. Server-verified timing, delayed emergency unlock, tamper-aware enforcement, and clear release paths." %>
+
+<section class="page-hero">
+  <div class="section-inner">
+    <p class="eyebrow">Solo Pacts</p>
+    <h1>A pact is a voluntary lock with a release time.</h1>
+    <p class="lede">You choose categories, choose a duration, review what becomes hard to change, and confirm with serious friction. The server records the release timestamp so device clock changes do not end the pact early.</p>
+
+    <div class="hero-actions hero-actions--inline">
+      <%= link_to "See pricing", pricing_path, class: "button button-secondary" %>
+      <%= link_to "Privacy commitments", privacy_path, class: "button button-secondary" %>
+    </div>
+  </div>
+</section>
+
+<section class="page-section">
+  <div class="section-inner">
+    <div class="section-heading">
+      <p class="eyebrow">The lifecycle</p>
+      <h2>Five steps. Server-owned timing.</h2>
+      <p>A Solo Pact moves through a fixed lifecycle so the user always knows where they stand and the server always knows what is true.</p>
+    </div>
+
+    <ol class="lifecycle">
+      <li>
+        <span class="lifecycle__step">01</span>
+        <h3>Configure</h3>
+        <p>Pick categories: porn, gambling, drugs, ads/trackers, malware/phishing, proxy/VPN/Tor. Pick a duration. Review what becomes hard to change while the pact is active.</p>
+      </li>
+      <li>
+        <span class="lifecycle__step">02</span>
+        <h3>Confirm</h3>
+        <p>The app shows exactly what will be enforced, what release looks like, and what the cooling-off period is. Confirmation requires deliberate friction: this is not a one-tap toggle.</p>
+      </li>
+      <li>
+        <span class="lifecycle__step">03</span>
+        <h3>Lock</h3>
+        <p>The server records the start and release timestamps and signs the pact state. The device starts enforcing locally so filtering keeps working when offline.</p>
+      </li>
+      <li>
+        <span class="lifecycle__step">04</span>
+        <h3>Serve</h3>
+        <p>While the pact is active, blocked attempts increment a counter, tamper events are logged, and offline behavior remains safe. No raw browsing history is collected by default.</p>
+      </li>
+      <li>
+        <span class="lifecycle__step">05</span>
+        <h3>Release</h3>
+        <p>Once the server-verified release time arrives, the pact ends cleanly. A user can renew immediately, change settings, or step away. Emergency release paths exist in between.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="page-section page-section-alt">
+  <div class="section-inner split-section">
+    <div class="section-heading sticky-heading">
+      <p class="eyebrow">Server time owns the lock</p>
+      <h2>Clients are not trusted for unlock timing.</h2>
+      <p>If the device clock is wound forward, if a profile is reinstalled, or if an app is reinstalled, the server still owns the truth about when the pact may release. Local enforcement falls back to the safe state until it can verify.</p>
+    </div>
+
+    <div class="prose">
+      <h3>What the server signs</h3>
+      <ul>
+        <li>Pact identifier and the device that owns it</li>
+        <li>Categories and policy bundle in effect</li>
+        <li>Start time and release time, anchored to server clock</li>
+        <li>Allowed release paths (timer expiry, partner approval, emergency override)</li>
+      </ul>
+
+      <h3>What the device does</h3>
+      <ul>
+        <li>Applies the signed policy locally</li>
+        <li>Stays locked while offline rather than failing open</li>
+        <li>Reports tamper, bypass, and block-count events when reachable</li>
+        <li>Refuses to honor unsigned or expired configuration</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="page-section">
+  <div class="section-inner">
+    <div class="section-heading">
+      <p class="eyebrow">Durations</p>
+      <h2>Short enough to start, long enough to matter.</h2>
+      <p>Solo Pact durations are designed for real recovery patterns. Shorter pacts are useful for testing, longer pacts cover real risk windows.</p>
+    </div>
+
+    <div class="duration-grid">
+      <% [
+        [ "24h", "Day reset",       "Useful for breaking a single-day pattern. Short enough to test the experience without committing to a multi-day lock." ],
+        [ "72h", "Recovery window", "The first MVP target. Long enough to feel real, short enough to commit to without coercion." ],
+        [ "7d",  "Weekly cycle",    "Aligns with weekly check-ins, partner reports, and real-life accountability rhythms." ],
+        [ "30d", "Monthly streak",  "For users who want sustained protection through the highest-risk windows in a typical month." ],
+        [ "90d", "Quarterly lock",  "Long-form pact for serious recovery work. Emergency release paths still apply." ],
+        [ "Custom", "Your duration", "Choose a custom period. The same release rules and emergency safeguards apply." ]
+      ].each do |length, label, body| %>
+        <article class="duration-card">
+          <p class="duration-card__length"><%= length %></p>
+          <p class="duration-card__label"><%= label %></p>
+          <p><%= body %></p>
+        </article>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<section class="page-section page-section-alt">
+  <div class="section-inner">
+    <div class="section-heading">
+      <p class="eyebrow">Release paths</p>
+      <h2>Release is a path, never a panic switch.</h2>
+      <p>Every pact has clear, documented ways to end. None of them are a one-tap escape during a moment of impulse.</p>
+    </div>
+
+    <div class="feature-grid feature-grid--three">
+      <article class="feature-card">
+        <span>Standard</span>
+        <h3>Timer expiry</h3>
+        <p>The default path. The server-verified release timestamp arrives, the pact ends, the user can renew or change settings.</p>
+      </article>
+
+      <article class="feature-card">
+        <span>Cooling-off</span>
+        <h3>Delayed emergency unlock</h3>
+        <p>For Solo users without a co-signer, an emergency unlock is requested and held for 24 hours before it takes effect. The pact stays enforced during the window.</p>
+      </article>
+
+      <article class="feature-card">
+        <span>Co-signed</span>
+        <h3>Partner approval</h3>
+        <p>When a co-signer is configured, an unblock request can be approved or declined. Coercive-control safeguards apply: visibility, audit, and abuse release paths come first.</p>
+      </article>
+
+      <article class="feature-card">
+        <span>Safety</span>
+        <h3>Abuse, medical, and legal overrides</h3>
+        <p>Documented escape routes exist for safety reasons: abusive partners, medical or legal emergencies, and device safety. These paths are auditable and never silent.</p>
+      </article>
+
+      <article class="feature-card">
+        <span>Renew</span>
+        <h3>Pact renewal</h3>
+        <p>Renewing immediately after release is one tap. Extending while a pact is active uses the same friction as creating a new pact.</p>
+      </article>
+
+      <article class="feature-card">
+        <span>End</span>
+        <h3>Account closure</h3>
+        <p>Closing an account follows the same release rules as a pact. There is no quiet bypass through deletion or reinstall.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="page-section">
+  <div class="section-inner split-section">
+    <div class="section-heading sticky-heading">
+      <p class="eyebrow">Tamper handling</p>
+      <h2>Bypass attempts are events, not silences.</h2>
+      <p>A pact that pretends nothing happened during a tamper attempt is not a pact. SentryPact treats bypass-shaped behavior as data the user and any co-signer should see.</p>
+    </div>
+
+    <div class="prose">
+      <h3>Detected on the device</h3>
+      <ul>
+        <li>DNS configuration changes</li>
+        <li>VPN profile installs, disables, or changes</li>
+        <li>Proxy and tunnel tools spinning up</li>
+        <li>Browser switches and extension changes</li>
+        <li>Permission revocation</li>
+        <li>Clock tampering</li>
+        <li>Uninstall attempts</li>
+      </ul>
+
+      <h3>What the user sees</h3>
+      <ul>
+        <li>The event in their own dashboard</li>
+        <li>The category and time, never raw URLs</li>
+        <li>Optional co-signer alert when configured</li>
+        <li>An audit trail that survives reinstall</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<%= render "shared/cta_banner",
+      eyebrow: "Try the model",
+      heading: "Start with a Solo Pact you actually trust.",
+      copy: "Pre-launch sign-ups will be invited to test the iOS Solo MVP first. The web flow is being built alongside it.",
+      cta_label: "Request early access",
+      cta_href: "mailto:hello@sentrypact.com" %>

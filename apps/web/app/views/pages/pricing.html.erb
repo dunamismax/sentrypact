@@ -1,0 +1,143 @@
+<% content_for :title, "Pricing | SentryPact" %>
+<% content_for :description, "SentryPact pricing draft: Free, Solo Pact, Pact Plus, and Family. Pricing will be confirmed before launch." %>
+
+<section class="page-hero">
+  <div class="section-inner">
+    <p class="eyebrow">Pricing draft</p>
+    <h1>A paid plan centered on Solo Pact.</h1>
+    <p class="lede">SentryPact is pre-launch. The plans below are the working price ladder for early access. Final numbers, billing cadence, and refund policy will be confirmed before the product is publicly purchasable.</p>
+  </div>
+</section>
+
+<section class="page-section">
+  <div class="section-inner">
+    <div class="pricing-grid pricing-grid--full">
+      <% [
+        {
+          name: "Free",
+          price: "$0",
+          cadence: "forever",
+          label: "Basic filtering",
+          description: "1 device, basic ad/tracker and porn DNS filtering, manual mode only.",
+          features: [
+            "1 device",
+            "Basic ad/tracker DNS filtering",
+            "Basic porn DNS filtering",
+            "Manual on/off mode",
+            "No timer-locked pact"
+          ],
+          featured: false
+        },
+        {
+          name: "Solo Pact",
+          price: "$6/mo",
+          cadence: "or $60/yr",
+          label: "Main early plan",
+          description: "Core categories, lock timer, delayed emergency unlock, up to 3 devices, tamper detection.",
+          features: [
+            "Up to 3 devices",
+            "Core categories: porn, gambling, drugs, ads, malware, proxy/VPN/Tor",
+            "Solo Pact timers: 24h, 72h, 7d, 30d, 90d, custom",
+            "Server-verified release",
+            "Delayed emergency unlock (24h cooling-off)",
+            "Tamper and bypass detection",
+            "Privacy-first weekly summary"
+          ],
+          featured: true
+        },
+        {
+          name: "Pact Plus",
+          price: "$12/mo",
+          cadence: "or $120/yr",
+          label: "Co-signer layer",
+          description: "Solo plus partner approvals, tamper alerts, partner reports, and priority false-positive review.",
+          features: [
+            "Everything in Solo Pact",
+            "Up to 5 devices",
+            "Optional co-signer approvals",
+            "Tamper alerts to the co-signer",
+            "Privacy-preserving partner reports",
+            "Priority false-positive review"
+          ],
+          featured: false
+        },
+        {
+          name: "Family",
+          price: "$18/mo",
+          cadence: "or $180/yr",
+          label: "Household coverage",
+          description: "Up to 10 devices, parent dashboard, child profiles, schedules, and app blocking.",
+          features: [
+            "Everything in Pact Plus",
+            "Up to 10 devices",
+            "Parent dashboard",
+            "Child profiles and schedules",
+            "App-level blocking",
+            "Per-child privacy controls"
+          ],
+          featured: false
+        }
+      ].each do |plan| %>
+        <article class="price-card price-card--full <%= "price-card-featured" if plan[:featured] %>">
+          <% if plan[:featured] %>
+            <span class="recommendation">Recommended</span>
+          <% end %>
+          <p><%= plan[:label] %></p>
+          <h3><%= plan[:name] %></h3>
+          <strong><%= plan[:price] %></strong>
+          <span class="price-card__cadence"><%= plan[:cadence] %></span>
+          <span class="price-card__description"><%= plan[:description] %></span>
+
+          <ul class="price-card__features">
+            <% plan[:features].each do |feature| %>
+              <li><%= feature %></li>
+            <% end %>
+          </ul>
+
+          <%= link_to "Request #{plan[:name]}",
+                "mailto:hello@sentrypact.com?subject=#{ERB::Util.url_encode("SentryPact #{plan[:name]}")}",
+                class: "button #{plan[:featured] ? "button-primary" : "button-secondary"}" %>
+        </article>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<section class="page-section page-section-alt">
+  <div class="section-inner">
+    <div class="section-heading">
+      <p class="eyebrow">Pricing notes</p>
+      <h2>Honest pricing for a small, sustainable product.</h2>
+      <p>SentryPact is a paid product on purpose. The price ladder is designed to keep the company healthy enough to stay focused on safety and privacy, not to optimize an upsell funnel.</p>
+    </div>
+
+    <div class="prose prose--columns">
+      <div>
+        <h3>Why paid by default</h3>
+        <ul>
+          <li>No incentive to monetize private behavior</li>
+          <li>Predictable runway to keep building safely</li>
+          <li>Real customer support, not best-effort</li>
+          <li>Product roadmap that does not depend on ads</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>What we will not do</h3>
+        <ul>
+          <li>Hide safety features behind a higher tier</li>
+          <li>Paywall emergency or abuse release paths</li>
+          <li>Sell user data, browsing patterns, or aggregated reports</li>
+          <li>Use dark patterns to discourage cancellation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%= render "shared/cta_banner",
+      eyebrow: "Final pricing",
+      heading: "Pricing locks in before launch.",
+      copy: "Early-access testers will be told the final price ladder before any first charge. Lifetime plans may exist for recovery users; they will not be priced so low that the subscription business breaks.",
+      cta_label: "Request early access",
+      cta_href: "mailto:hello@sentrypact.com" %>

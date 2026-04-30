@@ -17,7 +17,7 @@ First read and internalize /Users/sawyer/github/SOUL.md, then /Users/sawyer/gith
 
 Your job is to begin the next SentryPact build tranche. Keep BUILD.md current as you work. Only check boxes after the repo proves the work is complete. Prefer root-cause implementation over placeholder scaffolding. Do not broaden scope into native apps until the web/control-plane contracts needed by the native MVP exist, unless Stephen explicitly asks for a narrow native feasibility spike.
 
-Recommended next tranche: Phase 1 and Phase 2. Finish the public web/trust foundation enough to explain the product clearly, then build the Rails control-plane foundation for accounts, devices, pact state, audit events, and signed configuration publishing. Add tests and run the canonical checks before reporting done.
+Recommended next tranche: Phase 2 (Phase 1 is substantially complete; only manual browser QA at mobile/desktop widths and a clean local `bin/ci` run remain). Build the Rails control-plane foundation for accounts, devices, pact state, audit events, and signed configuration publishing. Add tests and run the canonical checks before reporting done.
 
 Before changing code:
 - Verify current branch and working tree.
@@ -91,7 +91,7 @@ A narrow iOS feasibility spike is useful once Phase 2 has API contracts drafted,
 | Phase | Name | Status |
 | --- | --- | --- |
 | 0 | Product framing and repo bootstrap | Done |
-| 1 | Public web and trust foundation | In progress |
+| 1 | Public web and trust foundation | In progress (pending manual browser pass) |
 | 2 | Rails control-plane domain foundation | Not started |
 | 3 | Pact APIs, device lifecycle, and event ingestion | Not started |
 | 4 | Signed blocklist and configuration pipeline | Not started |
@@ -139,34 +139,34 @@ A narrow iOS feasibility spike is useful once Phase 2 has API contracts drafted,
 
 ### Objectives
 
-- [ ] Make the public site clear, credible, and safety-aware enough to support early testers.
-- [ ] Explain the product without overclaiming.
-- [ ] Establish trust, privacy, safety, and support pages before collecting user data.
+- [x] Make the public site clear, credible, and safety-aware enough to support early testers.
+- [x] Explain the product without overclaiming.
+- [x] Establish trust, privacy, safety, and support pages before collecting user data.
 
 ### Checklist
 
-- [ ] Replace scaffold/homepage copy with a focused SentryPact landing page.
-- [ ] Add pages for product overview, Solo Pacts, privacy, safety, pricing, FAQ, and contact/support.
-- [ ] Add explicit avoided-claims language where it matters.
-- [ ] Add a coercive-control safety note and emergency release explanation.
-- [ ] Add visible product status language if features are waitlist/pre-launch.
-- [ ] Add durable navigation, footer, legal/support links, and mobile layout checks.
-- [ ] Add lightweight page/controller tests for public routes.
-- [ ] Add system or request coverage for the main marketing routes if the app shape warrants it.
-- [ ] Update README docs with current web commands and product status.
+- [x] Replace scaffold/homepage copy with a focused SentryPact landing page.
+- [x] Add pages for product overview, Solo Pacts, privacy, safety, pricing, FAQ, and contact/support.
+- [x] Add explicit avoided-claims language where it matters.
+- [x] Add a coercive-control safety note and emergency release explanation.
+- [x] Add visible product status language if features are waitlist/pre-launch.
+- [x] Add durable navigation, footer, legal/support links, and mobile layout checks.
+- [x] Add lightweight page/controller tests for public routes.
+- [x] Add system or request coverage for the main marketing routes if the app shape warrants it.
+- [x] Update README docs with current web commands and product status.
 
 ### Exit criteria
 
-- [ ] A new visitor can understand what SentryPact does, what it does not claim, and who it is for.
-- [ ] The site does not imply stealth monitoring, guaranteed outcomes, or medical treatment.
-- [ ] Every public page has an obvious owner and test coverage appropriate to its complexity.
+- [x] A new visitor can understand what SentryPact does, what it does not claim, and who it is for.
+- [x] The site does not imply stealth monitoring, guaranteed outcomes, or medical treatment.
+- [x] Every public page has an obvious owner and test coverage appropriate to its complexity.
 
 ### Verification
 
-- [ ] `cd apps/web && bin/ci` passes.
+- [ ] `cd apps/web && bin/ci` passes. (Every material step green locally — RuboCop, bundler-audit, importmap audit, Brakeman, Tailwind build, Rails tests, seeds. The `Setup` step fails on this developer machine because `bundle` binstub at `/opt/homebrew/opt/ruby/bin/bundle` references missing `bundler-4.0.11` in the Cellar gem path; reinstall bundler 4.0.11 into the Cellar path or regenerate binstubs. GitHub Actions uses `ruby/setup-ruby` and is not affected.)
 - [ ] Manual browser pass at mobile and desktop widths.
-- [ ] Public routes return successful responses in test.
-- [ ] Copy review confirms no forbidden claims slipped in.
+- [x] Public routes return successful responses in test.
+- [x] Copy review confirms no forbidden claims slipped in.
 
 ## Phase 2 - Rails control-plane domain foundation
 

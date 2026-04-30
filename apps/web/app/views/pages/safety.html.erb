@@ -1,0 +1,126 @@
+<% content_for :title, "Safety | SentryPact" %>
+<% content_for :description, "Coercive-control safeguards, emergency release paths, partner mode design, and how SentryPact avoids becoming a weapon in someone else's hands." %>
+
+<section class="page-hero">
+  <div class="section-inner">
+    <p class="eyebrow">Safety</p>
+    <h1>Lockdown cannot become a weapon.</h1>
+    <p class="lede">A blocker that locks the wrong person, or that an abusive partner can hold over someone, is not a useful safety product. SentryPact is being designed against coercive control from day one, with explicit consent, persistent visibility, and documented release paths for abuse, medical, and legal emergencies.</p>
+  </div>
+</section>
+
+<section class="page-section">
+  <div class="section-inner">
+    <div class="section-heading">
+      <p class="eyebrow">Coercive control</p>
+      <h2>The primary abuse case we design against.</h2>
+      <p>Adult co-signer mode is optional and powerful. Power without protection is a weapon. SentryPact's partner features only ship after the safeguards underneath them work.</p>
+    </div>
+
+    <div class="trust-card-grid">
+      <article>
+        <h3>Explicit consent at install</h3>
+        <p>Adding a co-signer requires the protected user's deliberate confirmation. There is no remote-add path, no surprise enrollment, and no &ldquo;suggested partner&rdquo; from anywhere except the protected user.</p>
+      </article>
+
+      <article>
+        <h3>Persistent visibility</h3>
+        <p>The protected user can always see who the co-signer is, what they can do, what they have done, and when they last accessed anything. This visibility cannot be hidden by the co-signer.</p>
+      </article>
+
+      <article>
+        <h3>Audited access</h3>
+        <p>Every co-signer view, approval, and decision is logged. The audit trail is visible to the protected user and survives reinstall.</p>
+      </article>
+
+      <article>
+        <h3>Reversibility</h3>
+        <p>Removing a co-signer follows the same friction as creating a pact, never more. Safety release paths cannot be blocked by the co-signer.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="page-section page-section-alt">
+  <div class="section-inner split-section">
+    <div class="section-heading sticky-heading">
+      <p class="eyebrow">Emergency release paths</p>
+      <h2>Documented escapes for documented reasons.</h2>
+      <p>A pact must end when staying locked is the unsafe option. Each release path is explicit, auditable, and never silent. None of them require the co-signer's permission.</p>
+    </div>
+
+    <div class="prose">
+      <h3>Recognized release reasons</h3>
+      <ul>
+        <li>Abuse, harassment, or coercive control by a co-signer</li>
+        <li>Medical or mental-health emergencies</li>
+        <li>Legal compulsion or law-enforcement need</li>
+        <li>Device safety, including loss, theft, or compromise</li>
+      </ul>
+
+      <h3>How a release works</h3>
+      <ul>
+        <li>The protected user requests release with a reason category</li>
+        <li>A cooling-off window applies for non-co-signed pacts (default 24 hours)</li>
+        <li>Filtering remains active during the cooling-off window</li>
+        <li>The release decision and reason category are recorded in the audit trail</li>
+        <li>The co-signer is notified that a release happened, never asked to approve it</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="page-section">
+  <div class="section-inner">
+    <div class="section-heading">
+      <p class="eyebrow">No stealth, no surveillance</p>
+      <h2>The protected user owns the visibility.</h2>
+      <p>SentryPact is not a stalking tool. The features below are guardrails, not options.</p>
+    </div>
+
+    <div class="feature-grid feature-grid--three">
+      <article class="feature-card">
+        <span>Visibility</span>
+        <h3>The app announces itself</h3>
+        <p>No disguised icons, no hidden background processes, no &ldquo;parent mode&rdquo; that turns the app invisible. The protected user can always see what is enforcing.</p>
+      </article>
+
+      <article class="feature-card">
+        <span>Reporting</span>
+        <h3>No raw browsing history by default</h3>
+        <p>Co-signers see category counts and tamper events. Page contents and URL-level data are not in the default reports and are not in any report a co-signer can request unilaterally.</p>
+      </article>
+
+      <article class="feature-card">
+        <span>Auditability</span>
+        <h3>Every safety-sensitive action is logged</h3>
+        <p>Pact creation, release decisions, co-signer additions, co-signer access, and emergency releases are all in the audit trail.</p>
+      </article>
+
+      <article class="feature-card">
+        <span>Override resistance</span>
+        <h3>Safety paths are not paywalled</h3>
+        <p>Emergency release does not depend on subscription status, billing health, or co-signer approval. Safety is the floor, not a feature.</p>
+      </article>
+
+      <article class="feature-card">
+        <span>Honesty</span>
+        <h3>No claims of unbreakable</h3>
+        <p>SentryPact is tamper-resistant and bypass-detecting. We do not promise impossibility. We do not market addiction treatment, guaranteed prevention, or medical outcomes.</p>
+      </article>
+
+      <article class="feature-card">
+        <span>Reach out</span>
+        <h3>Real human contact for safety reports</h3>
+        <p>If something feels wrong, contact us. Safety reports do not get queued behind feature requests.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<%= render "shared/cta_banner",
+      eyebrow: "Safety report",
+      heading: "If something is unsafe, tell us.",
+      copy: "We respond to safety reports as their own queue, ahead of feature work. Reach out from any inbox, including a friend's, if you cannot use your own.",
+      cta_label: "Email support@sentrypact.com",
+      cta_href: "mailto:support@sentrypact.com" %>

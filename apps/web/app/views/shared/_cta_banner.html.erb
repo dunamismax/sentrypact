@@ -1,0 +1,20 @@
+<%
+  eyebrow   ||= "Early access"
+  heading   ||= "Help shape protection that respects consent."
+  copy      ||= "SentryPact is pre-launch. Early testers see the Solo MVP first, with no marketing list spam."
+  cta_label ||= "Request access"
+  cta_href  ||= "mailto:hello@sentrypact.com"
+%>
+
+<section class="page-section page-section--cta">
+  <div class="section-inner">
+    <div class="access-banner">
+      <div>
+        <p class="eyebrow"><%= eyebrow %></p>
+        <h2><%= heading %></h2>
+        <p class="access-banner__copy"><%= copy %></p>
+      </div>
+      <%= link_to cta_label, cta_href, class: "button button-primary" %>
+    </div>
+  </div>
+</section>

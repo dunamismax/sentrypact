@@ -1,0 +1,90 @@
+<% content_for :title, "FAQ | SentryPact" %>
+<% content_for :description, "Frequently asked questions about SentryPact: how Solo Pacts work, what we promise, what we do not claim, and how privacy and safety are handled." %>
+
+<section class="page-hero">
+  <div class="section-inner">
+    <p class="eyebrow">FAQ</p>
+    <h1>Questions worth asking before you trust a blocker.</h1>
+    <p class="lede">SentryPact is pre-launch. These answers describe how the product is being designed and what we are committing to. Anything that is not yet shipped is marked clearly.</p>
+  </div>
+</section>
+
+<section class="page-section">
+  <div class="section-inner">
+    <div class="faq-grid">
+      <% [
+        [
+          "Is SentryPact impossible to bypass?",
+          "No. SentryPact is tamper-resistant and bypass-detecting. We design enforcement to be hard to disable in the moment and easy to detect when something tries. We do not market the product as impossible to bypass, and we will not."
+        ],
+        [
+          "Is SentryPact a treatment for addiction?",
+          "No. SentryPact is a filtering and accountability tool. It is not medical advice, treatment, or a cure. People with serious compulsive-behavior issues should work with a qualified professional. SentryPact is one piece of a recovery toolkit, not the whole thing."
+        ],
+        [
+          "Will it stop me from accessing something I urgently need?",
+          "Every Solo Pact has documented release paths. There is a delayed emergency unlock with a cooling-off window for Solo users, and there are abuse, medical, and legal release paths regardless of plan. Safety release does not depend on subscription status."
+        ],
+        [
+          "Can a partner secretly install or monitor me?",
+          "No. SentryPact does not support stealth installs or invisible co-signer modes. Adding a co-signer requires explicit consent from the protected user, the relationship is always visible inside the app, and the audit trail captures partner access."
+        ],
+        [
+          "What does SentryPact collect by default?",
+          "Category-level block counts, tamper and bypass events, device check-in metadata, pact lifecycle events, and an audit trail for safety-sensitive actions. No raw browsing history, no page contents, and no partner screenshots by default."
+        ],
+        [
+          "Can I turn on full URL logging?",
+          "Yes, when that feature ships. It will be opt-in, visible inside the app, and recorded in the audit trail. It will never be a default and will never be silently enabled by a co-signer."
+        ],
+        [
+          "What stops me from changing my device clock to end a pact early?",
+          "The server records the start and release timestamps and signs the pact. Local enforcement falls back to the safe state if it cannot verify with the server, and tamper events are logged when something looks like a clock change."
+        ],
+        [
+          "What happens during a tamper attempt?",
+          "The event is logged on the device, reported to the server when reachable, and visible to the user in their dashboard. If a co-signer is configured, they can see tamper events as part of the privacy-preserving weekly summary."
+        ],
+        [
+          "Which platforms are supported?",
+          "iOS Solo is the first MVP target. Android Solo is next. macOS, Windows, and browser companions follow once the mobile loop is proven. Native enforcement uses the platform's real controls (Network Extension, VpnService, Windows Filtering Platform, etc.)."
+        ],
+        [
+          "Is the product available right now?",
+          "Not yet. SentryPact is in active build. The Rails control plane and iOS Solo MVP are the immediate focus. You can request early access and we will share progress without flooding your inbox."
+        ],
+        [
+          "How much will it cost?",
+          "The current price ladder is Free, Solo Pact at $6/mo, Pact Plus at $12/mo, and Family at $18/mo. These numbers will be confirmed before launch. Safety release paths are not paywalled at any tier."
+        ],
+        [
+          "Will SentryPact sell my data?",
+          "No. SentryPact is a paid product on purpose. We do not sell user data, do not advertise on browsing patterns, and do not train models on user behavior."
+        ],
+        [
+          "Can I delete my account and data?",
+          "Yes. Account closure follows the same release rules as a pact: there is no quiet bypass through deletion, and the published deletion policy will spell out what is removed and what is retained for audit purposes."
+        ],
+        [
+          "How do I report a safety problem?",
+          "Email support@sentrypact.com or, for security issues, security@sentrypact.com. Safety reports do not get queued behind feature work."
+        ]
+      ].each_with_index do |(question, answer), index| %>
+        <details class="faq-item"<%= " open" if index < 2 %>>
+          <summary>
+            <span class="faq-item__index"><%= format("%02d", index + 1) %></span>
+            <span class="faq-item__question"><%= question %></span>
+          </summary>
+          <p><%= answer %></p>
+        </details>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<%= render "shared/cta_banner",
+      eyebrow: "Still have questions?",
+      heading: "Ask us anything before you trust us.",
+      copy: "Email is the fastest way to reach a real person. We try to answer privacy and safety questions quickly, even before launch.",
+      cta_label: "Email support",
+      cta_href: "mailto:support@sentrypact.com" %>

@@ -1,0 +1,152 @@
+<% content_for :title, "Product overview | SentryPact" %>
+<% content_for :description, "What SentryPact is, who it is for, what it does not claim, and how the Rails control plane and native enforcement clients fit together." %>
+
+<section class="page-hero">
+  <div class="section-inner">
+    <p class="eyebrow">Product overview</p>
+    <h1>Filtering you cannot impulsively switch off.</h1>
+    <p class="lede">SentryPact is a privacy-preserving, lockdown-first blocker for adults and families who want protection that stays on at the exact moment it is needed most. It combines DNS, app, and browser filtering with timer-locked Solo Pacts, optional co-signers, tamper detection, and minimal accountability reporting.</p>
+  </div>
+</section>
+
+<section class="page-section">
+  <div class="section-inner split-section">
+    <div class="section-heading sticky-heading">
+      <p class="eyebrow">Wedge</p>
+      <h2>Most blockers fail at the same point.</h2>
+      <p>The user can disable them when impulse is strongest. SentryPact starts from the opposite assumption: ask the user to make a clear pact up front, record the server-verified release time, and keep enforcement active until the pact is fulfilled or a documented release path completes.</p>
+    </div>
+
+    <div class="prose">
+      <h3>Core language we use</h3>
+      <ul>
+        <li>Lockdown-first filtering</li>
+        <li>Timer-locked Solo Pacts</li>
+        <li>Optional co-signer approvals</li>
+        <li>Tamper and bypass detection</li>
+        <li>Privacy-preserving accountability</li>
+      </ul>
+
+      <h3>Claims we will not make</h3>
+      <ul>
+        <li>Impossible to bypass</li>
+        <li>Unbreakable</li>
+        <li>Addiction cure</li>
+        <li>Guaranteed protection</li>
+        <li>Secret monitoring</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="page-section page-section-alt">
+  <div class="section-inner">
+    <div class="section-heading">
+      <p class="eyebrow">Architecture direction</p>
+      <h2>Native enforcement, Rails control plane.</h2>
+      <p>The cloud control plane owns accounts, subscriptions, devices, pact state, server-side time, partner relationships, approvals, tamper ingestion, reports, and signed configuration publishing. The enforcement layer stays native because the operating system is the only place real control lives.</p>
+    </div>
+
+    <div class="feature-grid feature-grid--three">
+      <article class="feature-card">
+        <span>iOS &amp; macOS</span>
+        <h3>Swift native</h3>
+        <p>Network Extension, local VPN/DNS, Family Controls and Managed Settings where approved, optional configuration profiles for stronger lockdown.</p>
+      </article>
+
+      <article class="feature-card">
+        <span>Android</span>
+        <h3>Kotlin native</h3>
+        <p>VpnService filtering, Device Admin friction where policy allows, accessibility services only when truly needed, no surveillance by default.</p>
+      </article>
+
+      <article class="feature-card">
+        <span>Windows</span>
+        <h3>Native service</h3>
+        <p>Windows Filtering Platform with locked DNS and hosts controls, tamper-resistant service registration, deterministic update behavior.</p>
+      </article>
+
+      <article class="feature-card">
+        <span>Browsers</span>
+        <h3>Companion extensions</h3>
+        <p>Chrome, Edge, Firefox, and Safari companions for cosmetic filtering, DoH detection, SafeSearch enforcement, and YouTube Restricted Mode.</p>
+      </article>
+
+      <article class="feature-card">
+        <span>Web</span>
+        <h3>Rails control plane</h3>
+        <p>Server-rendered dashboard, JSON APIs for native clients, signed configuration publishing, audit trail, and operator inspection.</p>
+      </article>
+
+      <article class="feature-card">
+        <span>Data</span>
+        <h3>Explicit and inspectable</h3>
+        <p>SQLite for the local Rails scaffold today, PostgreSQL likely once the control plane stores real pact and device state.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="page-section">
+  <div class="section-inner">
+    <div class="section-heading">
+      <p class="eyebrow">First product target</p>
+      <h2>SentryPact Solo for iOS.</h2>
+      <p>The MVP focuses on the smallest believable loop: a person can install the app, choose categories, lock a Solo Pact, and stay locked through the release time even when their willpower changes.</p>
+    </div>
+
+    <div class="checklist-grid">
+      <ul class="checklist">
+        <li>Account creation</li>
+        <li>Local VPN/DNS filtering</li>
+        <li>Categories: porn, gambling, drugs, ads/trackers, malware/phishing, proxy/VPN/Tor</li>
+        <li>Solo Pact timers for 24h, 72h, 7d, and 30d</li>
+        <li>Server-verified release timestamps</li>
+        <li>Basic tamper detection</li>
+        <li>Emergency unlock with a 24h cooling-off period</li>
+        <li>Blocked-attempt counter</li>
+        <li>Minimal dashboard</li>
+        <li>Signed blocklist CDN</li>
+        <li>Privacy-first weekly summary</li>
+      </ul>
+
+      <ul class="checklist checklist--muted">
+        <li>Out of scope for v0.1: partner dashboard</li>
+        <li>Out of scope for v0.1: family accounts</li>
+        <li>Out of scope for v0.1: desktop apps</li>
+        <li>Out of scope for v0.1: router DNS</li>
+        <li>Out of scope for v0.1: AI classification</li>
+        <li>Out of scope for v0.1: deep reports</li>
+        <li>Out of scope for v0.1: group plans</li>
+        <li>Out of scope for v0.1: MDM features</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="page-section page-section-alt">
+  <div class="section-inner">
+    <div class="section-heading">
+      <p class="eyebrow">Roadmap direction</p>
+      <h2>One thing at a time, in the right order.</h2>
+      <p>Each step earns the next. We will not start a full native app until the control plane has contracts the native client can actually consume.</p>
+    </div>
+
+    <ol class="ordered-roadmap">
+      <li><strong>Rails website and backend foundation.</strong> Public site, accounts, devices, pact state, audit events, signed configuration publishing.</li>
+      <li><strong>iOS Solo MVP.</strong> Local VPN/DNS filtering, server-verified Solo Pact release, tamper detection, minimal reporting.</li>
+      <li><strong>Android Solo MVP.</strong> VpnService and Device Admin where appropriate, with the same pact semantics.</li>
+      <li><strong>Co-Signed Pact mode.</strong> Approval requests, tamper alerts, weekly privacy-preserving reports.</li>
+      <li><strong>Desktop and browser coverage.</strong> macOS, Windows, and browser companions.</li>
+      <li><strong>Family and group plans.</strong> Parent dashboard, child profiles, recovery and coach groups.</li>
+      <li><strong>Intelligence layer.</strong> On-device classification, bypass research, false-positive review.</li>
+    </ol>
+  </div>
+</section>
+
+<%= render "shared/cta_banner",
+      eyebrow: "Early access",
+      heading: "See the Solo MVP first.",
+      copy: "SentryPact is pre-launch. Reach out and we will share progress without flooding your inbox.",
+      cta_label: "Request access",
+      cta_href: "mailto:hello@sentrypact.com" %>

@@ -1,0 +1,43 @@
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand-block">
+      <%= link_to root_path, class: "footer-brand-link" do %>
+        <span class="brand-mark brand-mark--footer" aria-hidden="true">SP</span>
+        <span>SentryPact</span>
+      <% end %>
+      <p class="footer-copy">Filtering that stays on. Tamper-resistant, bypass-detecting, and privacy-preserving protection for voluntary lockdown.</p>
+      <p class="footer-disclaimer">SentryPact is not marketed as impossible to bypass, a medical treatment, or a guaranteed prevention tool.</p>
+    </div>
+
+    <nav class="footer-columns" aria-label="Footer">
+      <div class="footer-column">
+        <p class="footer-column__title">Product</p>
+        <%= link_to "Overview", overview_path %>
+        <%= link_to "Solo Pacts", pacts_path %>
+        <%= link_to "Pricing", pricing_path %>
+        <%= link_to "FAQ", faq_path %>
+      </div>
+
+      <div class="footer-column">
+        <p class="footer-column__title">Trust</p>
+        <%= link_to "Privacy", privacy_path %>
+        <%= link_to "Safety", safety_path %>
+        <%= link_to "Security", "mailto:security@sentrypact.com" %>
+      </div>
+
+      <div class="footer-column">
+        <p class="footer-column__title">Support</p>
+        <%= link_to "Contact", support_path %>
+        <%= link_to "Early access", "mailto:hello@sentrypact.com" %>
+        <%= link_to "Press", "mailto:press@sentrypact.com" %>
+      </div>
+    </nav>
+  </div>
+
+  <div class="footer-meta">
+    <div class="footer-meta__inner">
+      <p>&copy; <%= Date.current.year %> SentryPact. All rights reserved.</p>
+      <p class="footer-meta__claim">Tamper-resistant. Bypass-detecting. Privacy-preserving.</p>
+    </div>
+  </div>
+</footer>

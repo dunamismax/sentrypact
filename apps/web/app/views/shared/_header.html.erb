@@ -1,0 +1,44 @@
+<div class="status-bar" role="status" aria-live="polite">
+  <div class="status-bar__inner">
+    <span class="status-bar__pill">Pre-launch</span>
+    <p>Building the iOS Solo MVP. Early access is by request while the control plane and enforcement client are still in active development.</p>
+    <%= link_to "Request access", "mailto:hello@sentrypact.com", class: "status-bar__link" %>
+  </div>
+</div>
+
+<header class="site-header">
+  <nav class="primary-nav" aria-label="Primary navigation">
+    <%= link_to root_path, class: "brand-link", aria: { label: "SentryPact home" } do %>
+      <span class="brand-mark" aria-hidden="true">SP</span>
+      <span class="brand-word">SentryPact</span>
+    <% end %>
+
+    <div class="desktop-nav">
+      <%= link_to "Overview", overview_path, class: ("is-current" if current_page?(overview_path)) %>
+      <%= link_to "Pacts",    pacts_path,    class: ("is-current" if current_page?(pacts_path)) %>
+      <%= link_to "Privacy",  privacy_path,  class: ("is-current" if current_page?(privacy_path)) %>
+      <%= link_to "Safety",   safety_path,   class: ("is-current" if current_page?(safety_path)) %>
+      <%= link_to "Pricing",  pricing_path,  class: ("is-current" if current_page?(pricing_path)) %>
+    </div>
+
+    <div class="nav-actions">
+      <button type="button" class="theme-toggle" data-controller="theme" data-action="theme#toggle" aria-pressed="true">
+        <span class="theme-toggle__track" aria-hidden="true">
+          <span class="theme-toggle__thumb"></span>
+        </span>
+        <span data-theme-target="label">Dark</span>
+      </button>
+      <%= link_to "Early access", "mailto:hello@sentrypact.com", class: "button button-primary nav-cta" %>
+    </div>
+  </nav>
+
+  <nav class="mobile-nav" aria-label="Section navigation">
+    <%= link_to "Overview", overview_path, class: ("is-current" if current_page?(overview_path)) %>
+    <%= link_to "Pacts",    pacts_path,    class: ("is-current" if current_page?(pacts_path)) %>
+    <%= link_to "Privacy",  privacy_path,  class: ("is-current" if current_page?(privacy_path)) %>
+    <%= link_to "Safety",   safety_path,   class: ("is-current" if current_page?(safety_path)) %>
+    <%= link_to "Pricing",  pricing_path,  class: ("is-current" if current_page?(pricing_path)) %>
+    <%= link_to "FAQ",      faq_path,      class: ("is-current" if current_page?(faq_path)) %>
+    <%= link_to "Support",  support_path,  class: ("is-current" if current_page?(support_path)) %>
+  </nav>
+</header>

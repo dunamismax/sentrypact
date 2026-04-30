@@ -1,4 +1,5 @@
 <% content_for :title, "SentryPact | Filtering that stays on" %>
+<% content_for :description, "Lockdown-first filtering with timer-locked Solo Pacts, server-verified release, optional co-signers, tamper detection, and privacy-preserving accountability." %>
 
 <section class="hero-section">
   <div class="hero-background" aria-hidden="true"></div>
@@ -10,8 +11,8 @@
       <p class="lede">Make a timer-locked pact with yourself, block high-risk categories, detect bypass attempts, and keep accountability private by default.</p>
 
       <div class="hero-actions">
-        <a href="mailto:hello@sentrypact.com" class="button button-primary">Join early access</a>
-        <a href="#pacts" class="button button-secondary">See the pact model</a>
+        <%= link_to "Join early access", "mailto:hello@sentrypact.com", class: "button button-primary" %>
+        <%= link_to "See the pact model", pacts_path, class: "button button-secondary" %>
       </div>
 
       <div class="metric-row" aria-label="SentryPact product metrics">
@@ -29,7 +30,7 @@
         </div>
       </div>
 
-      <p class="fine-print">Tamper-resistant and bypass-detecting, not marketed as impossible to bypass or as a medical treatment.</p>
+      <p class="fine-print">Tamper-resistant and bypass-detecting. Not marketed as impossible to bypass, a medical treatment, or a guaranteed prevention tool.</p>
     </div>
 
     <div class="product-preview" aria-label="SentryPact dashboard preview">
@@ -66,14 +67,14 @@
             <section class="panel" aria-label="Blocked categories">
               <p class="panel-kicker">Blocked categories</p>
               <div class="category-list">
-                <% ["Porn", "Gambling", "Proxy/VPN", "Malware"].each_with_index do |category, index| %>
+                <% [ [ "Porn", 18, 76 ], [ "Gambling", 15, 65 ], [ "Proxy/VPN", 12, 54 ], [ "Malware", 9, 43 ] ].each do |category, count, percent| %>
                   <div class="category-row">
                     <div>
                       <span><%= category %></span>
-                      <small><%= 18 - (index * 3) %></small>
+                      <small><%= count %></small>
                     </div>
                     <div class="progress-track progress-track--small">
-                      <div class="progress-fill" style="width: <%= 76 - (index * 11) %>%"></div>
+                      <div class="progress-fill" style="width: <%= percent %>%"></div>
                     </div>
                   </div>
                 <% end %>
@@ -113,7 +114,7 @@
   </div>
 </section>
 
-<section id="pacts" class="page-section">
+<section class="page-section">
   <div class="section-inner">
     <div class="section-heading">
       <p class="eyebrow">The product idea</p>
@@ -146,24 +147,31 @@
         <p>Category counts and tamper events are enough for most accountability. Full URL history is opt-in, never the default.</p>
       </article>
     </div>
+
+    <p class="section-foot">
+      <%= link_to "Read the full pact model", pacts_path, class: "section-link" %>
+    </p>
   </div>
 </section>
 
-<section id="platforms" class="page-section page-section-alt">
+<section class="page-section page-section-alt">
   <div class="section-inner split-section">
     <div class="section-heading sticky-heading">
       <p class="eyebrow">Build order</p>
       <h2>Native enforcement, Rails control plane.</h2>
       <p>The website, backend, dashboard, subscriptions, pact state, and signed configuration publishing live in Rails. Device enforcement stays native where the operating system requires real control.</p>
+      <p>
+        <%= link_to "See the product overview", overview_path, class: "section-link" %>
+      </p>
     </div>
 
     <div class="timeline-list">
       <% [
-        ["v0.1", "iOS Solo", "Swift, local VPN/DNS filtering, Family Controls where approved, server-verified Solo Pact release."],
-        ["v0.2", "Android Solo", "Kotlin, VpnService filtering, Device Admin friction where policy allows, same pact semantics."],
-        ["v0.3", "Co-Signed Pact", "Partner web dashboard, approval requests, tamper alerts, weekly summaries, partner PIN/override."],
-        ["v0.4", "Desktop and browser", "macOS, Windows, Chrome, Edge, Firefox, Safari, DoH detection, SafeSearch enforcement."],
-        ["v0.5", "Family and groups", "Child profiles, schedules, device groups, co-parent roles, coach and recovery group plans."]
+        [ "v0.1", "iOS Solo", "Swift, local VPN/DNS filtering, Family Controls where approved, server-verified Solo Pact release." ],
+        [ "v0.2", "Android Solo", "Kotlin, VpnService filtering, Device Admin friction where policy allows, same pact semantics." ],
+        [ "v0.3", "Co-Signed Pact", "Partner web dashboard, approval requests, tamper alerts, weekly summaries, partner PIN/override." ],
+        [ "v0.4", "Desktop and browser", "macOS, Windows, Chrome, Edge, Firefox, Safari, DoH detection, SafeSearch enforcement." ],
+        [ "v0.5", "Family and groups", "Child profiles, schedules, device groups, co-parent roles, coach and recovery group plans." ]
       ].each do |version, title, body| %>
         <article class="timeline-item">
           <span><%= version %></span>
@@ -177,20 +185,20 @@
   </div>
 </section>
 
-<section id="pricing" class="page-section">
+<section class="page-section">
   <div class="section-inner">
     <div class="section-heading">
       <p class="eyebrow">Pricing draft</p>
       <h2>A paid plan centered on Solo Pact.</h2>
-      <p>The early business model keeps the acquisition tier useful while making timer-locked protection the first serious paid wedge.</p>
+      <p>The early business model keeps the acquisition tier useful while making timer-locked protection the first serious paid wedge. Final pricing will be confirmed before launch.</p>
     </div>
 
     <div class="pricing-grid">
       <% [
-        ["Free", "$0", "Basic filtering", "1 device, basic ad/tracker and porn DNS filtering, manual mode only."],
-        ["Solo Pact", "$6/mo", "Main early plan", "Core categories, lock timer, delayed emergency unlock, up to 3 devices, tamper detection."],
-        ["Pact Plus", "$12/mo", "Co-signer layer", "Solo plus partner approvals, tamper alerts, partner reports, and priority false-positive review."],
-        ["Family", "$18/mo", "Household coverage", "Up to 10 devices, parent dashboard, child profiles, schedules, and app blocking."]
+        [ "Free",      "$0",     "Basic filtering",  "1 device, basic ad/tracker and porn DNS filtering, manual mode only." ],
+        [ "Solo Pact", "$6/mo",  "Main early plan",  "Core categories, lock timer, delayed emergency unlock, up to 3 devices, tamper detection." ],
+        [ "Pact Plus", "$12/mo", "Co-signer layer",  "Solo plus partner approvals, tamper alerts, partner reports, and priority false-positive review." ],
+        [ "Family",    "$18/mo", "Household coverage", "Up to 10 devices, parent dashboard, child profiles, schedules, and app blocking." ]
       ].each do |name, price, label, description| %>
         <article class="price-card <%= "price-card-featured" if name == "Solo Pact" %>">
           <% if name == "Solo Pact" %>
@@ -200,19 +208,29 @@
           <h3><%= name %></h3>
           <strong><%= price %></strong>
           <span><%= description %></span>
-          <a href="mailto:hello@sentrypact.com?subject=SentryPact%20<%= ERB::Util.url_encode(name) %>" class="button <%= name == "Solo Pact" ? "button-primary" : "button-secondary" %>">Request <%= name %></a>
+          <%= link_to "Request #{name}",
+                "mailto:hello@sentrypact.com?subject=#{ERB::Util.url_encode("SentryPact #{name}")}",
+                class: "button #{name == "Solo Pact" ? "button-primary" : "button-secondary"}" %>
         </article>
       <% end %>
     </div>
+
+    <p class="section-foot">
+      <%= link_to "Compare every plan", pricing_path, class: "section-link" %>
+    </p>
   </div>
 </section>
 
-<section id="trust" class="trust-section">
+<section class="trust-section">
   <div class="section-inner trust-grid">
     <div class="section-heading">
       <p class="eyebrow">Trust and safety</p>
       <h2>Lockdown cannot feel like malware.</h2>
       <p>Users must understand what they are locking before they lock it. Partner mode must be visible, consent-based, auditable, and designed against coercive control.</p>
+      <p>
+        <%= link_to "Privacy commitments", privacy_path, class: "section-link" %>
+        <%= link_to "Safety design", safety_path, class: "section-link" %>
+      </p>
     </div>
 
     <div class="trust-card-grid">
@@ -243,8 +261,9 @@
       <div>
         <p class="eyebrow">Early access</p>
         <h2>Help shape protection that respects consent.</h2>
+        <p class="access-banner__copy">SentryPact is pre-launch. Early testers will see the Solo MVP first, with no marketing list spam.</p>
       </div>
-      <a href="mailto:hello@sentrypact.com" class="button button-primary">Request access</a>
+      <%= link_to "Request access", "mailto:hello@sentrypact.com", class: "button button-primary" %>
     </div>
   </div>
 </section>

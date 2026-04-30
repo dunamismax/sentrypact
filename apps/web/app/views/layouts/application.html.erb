@@ -3,10 +3,17 @@
   <head>
     <title><%= content_for(:title) || "SentryPact | Filtering that stays on" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="SentryPact is a lockdown-first blocker with timer-locked Solo Pacts, optional co-signers, tamper detection, and privacy-preserving accountability.">
+    <meta name="description" content="<%= content_for(:description) || "SentryPact is a lockdown-first blocker with timer-locked Solo Pacts, optional co-signers, tamper detection, and privacy-preserving accountability." %>">
+    <meta name="theme-color" content="#080a0a" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f2eee3" media="(prefers-color-scheme: light)">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="application-name" content="SentryPact">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta property="og:site_name" content="SentryPact">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="<%= content_for(:title) || "SentryPact | Filtering that stays on" %>">
+    <meta property="og:description" content="<%= content_for(:description) || "Lockdown-first filtering with timer-locked Solo Pacts, optional co-signers, tamper detection, and privacy-preserving accountability." %>">
+    <meta name="twitter:card" content="summary">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -35,56 +42,12 @@
   <body class="antialiased">
     <a href="#main-content" class="skip-link">Skip to content</a>
 
-    <header class="site-header">
-      <nav class="primary-nav" aria-label="Primary navigation">
-        <a href="/" class="brand-link">
-          <span class="brand-mark">SP</span>
-          <span>SentryPact</span>
-        </a>
-
-        <div class="desktop-nav">
-          <a href="#pacts">Pacts</a>
-          <a href="#platforms">Platforms</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#trust">Trust</a>
-        </div>
-
-        <div class="nav-actions">
-          <button type="button" class="theme-toggle" data-controller="theme" data-action="theme#toggle" aria-pressed="true">
-            <span class="theme-toggle__track" aria-hidden="true">
-              <span class="theme-toggle__thumb"></span>
-            </span>
-            <span data-theme-target="label">Dark</span>
-          </button>
-          <a href="mailto:hello@sentrypact.com" class="button button-primary nav-cta">Early access</a>
-        </div>
-      </nav>
-
-      <nav class="mobile-nav" aria-label="Section navigation">
-        <a href="#pacts">Pacts</a>
-        <a href="#platforms">Platforms</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#trust">Trust</a>
-      </nav>
-    </header>
+    <%= render "shared/header" %>
 
     <main id="main-content">
       <%= yield %>
     </main>
 
-    <footer class="site-footer">
-      <div class="footer-inner">
-        <div>
-          <p class="footer-brand">SentryPact</p>
-          <p class="footer-copy">Filtering that stays on. Tamper-resistant, bypass-detecting, privacy-preserving protection for voluntary lockdown.</p>
-        </div>
-
-        <div class="footer-links">
-          <a href="mailto:privacy@sentrypact.com" class="hover:text-white">Privacy</a>
-          <a href="mailto:security@sentrypact.com" class="hover:text-white">Security</a>
-          <a href="mailto:support@sentrypact.com" class="hover:text-white">Support</a>
-        </div>
-      </div>
-    </footer>
+    <%= render "shared/footer" %>
   </body>
 </html>
